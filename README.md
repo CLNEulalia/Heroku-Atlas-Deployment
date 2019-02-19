@@ -34,17 +34,6 @@ There are lots of ways to do each of these steps. For example, we can get our co
 - Adding a git remote and using git push to transmit files (like with GH pages)
 - Putting the files on a flash drive, fastening it to a homing pigeon's leg, then having an operator receive the pigeon and copy the files over to the server
 
-### Heroku
-
-Today, we'll be using a service called Heroku to deploy our apps, because it makes all the above steps easy. For example, Heroku automatically does the following...
-
-- Starts up a new server when we run `heroku create`, and installs all the necessary services
-- Adds a new remote to our Git repo, so we can just run `git push heroku master` to copy our code over
-- Detects our database
-- Detects the language our program is written in and chooses a buildpack
-- Automatically installs our app's dependencies, and starts our app
-- Easily change configuration information using `heroku config`
-
 ## Environments and Environmental Variables
 
 ### Environments
@@ -100,5 +89,33 @@ process.env.<YOUR_ENVIRONMENTAL_VARIABLE_NAME>
 [dotenv](https://github.com/motdotla/dotenv) is a node package used to store sensitive information in the environment. It's a handy tool but not strictly necessary for this deployment. It is a fantastic practice, and accords with [12-factor principles](https://12factor.net/).
 
 ## Break (10 min)
+
+## Deploying Node-Express-Mongoose Applications
+
+Deploying our Node-Express-Mongoose application consists of 2 sets of steps. First, we'll sign up for Heroku, download the Heroku CLI, and set up a Mongo database that our app can connect to. Next, we'll configure our Node-Express-Mongoose applications to connect to this new cloud-hosted database and finally, deploy our application to Heroku.
+
+## You Do: Deploy 'Todos App'
+
+Today, we will be deploying the 'solution' branch of our Todo excercise. You can clone it [here](https://git.generalassemb.ly/dc-wdi-node-express/express-to-do/tree/solution).
+> When you clone a repo, it will clone down the master branch. Make sure you `git checkout solution` to switch to the ***solution*** branch once you've cloned!
+
+### Heroku
+
+We'll be using a service called Heroku to deploy our apps, because it makes all the steps for deployment easy, simplifying and expediting the process. For example, Heroku automatically does the following...
+
+- Starts up a new server when we run `heroku create`, and installs all the necessary services
+- Adds a new remote to our Git repo, so we can just run `git push heroku master` to copy our code over
+- Detects our database
+- Detects the language our program is written in and chooses a buildpack
+- Automatically installs our app's dependencies, and starts our app
+- Easily change configuration information using `heroku config`
+
+Heroku also has a FREE pricing tier!
+
+### MLab
+
+MLab (`mlab.com`) is a cloud-based database service that hosts a protected MongoDB that can be easily integrated with a Heroku application.
+
+Today, we will set up an MLab account and database to host our `todo` database from MongoDB.
 
 
