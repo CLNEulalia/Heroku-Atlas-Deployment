@@ -77,6 +77,7 @@ You can create a new environmental variable in the terminal too! (terminal, not 
 $ export <YOUR_ENVIRONMENTAL_VARIABLE_NAME>=<variableValue>
 ```
 > Make sure there are no spaces next to the equals sign!
+
 > Environment variables tend to be SCREAMING_SNAKE_CASE by convention.
 
 To test, try logging the following code from the node repl.
@@ -131,7 +132,9 @@ Deployment is essentially an exercise in following directions. Follow the step-b
 
 3. From your project directory, create an app on Heroku `$ heroku create <your-app-name>`
     > Make sure you are in your Todo App project directory before you run this command
+
     > `heroku create` prepares Heroku to receive your code. Heroku will randomly create an app name for you if you don't specify one
+
     > If you choose to name your application, you will need to use a unique name (something someone else has not used before). If the name is taken, Heroku will prompt you to choose something new.
 
 #### Set up MLab
@@ -153,10 +156,13 @@ Deployment is essentially an exercise in following directions. Follow the step-b
 9. You will be redirected to your MLab account homepage, where your databases are listed. Click on the database you've just created.
 
 10. Next, you will create a new user. Click on the Users tab and click 'Add database user'. You will be prompted to provide a Database username and Database password.
-> This is *not* the user with which you logged in to MLab. "User" refers to an app that has access to your database, and ***not your mlab account/username***.
-> Create a Database username and Database password that you will remember, or write it down somewhere. You will need this information again later.
-> Do not use any special characters! Special characters can complicate the proceess when configuring your MLab database with Heroku.
-> Do not check 'Make read-only'. Full CRUD functionality will not work with a read-only database.
+    > This is *not* the user with which you logged in to MLab. "User" refers to an app that has access to your database, and ***not your mlab account/username***.
+
+    > Create a Database username and Database password that you will remember, or write it down somewhere. You will need this information again later.
+
+    > Do not use any special characters! Special characters can complicate the proceess when configuring your MLab database with Heroku.
+    
+    > Do not check 'Make read-only'. Full CRUD functionality will not work with a read-only database.
 
 // ADD SCREEN SHOT HERE
 
