@@ -259,3 +259,14 @@ You may notice that the errors you receive after running `$ heroku logs --tail` 
 ### Help Each Other Out!
 
 If you notice somebody running into the same problem as you, try working together on debugging it!
+
+## Additonal Resources
+
+- [About Environments](about-environments.md)
+- [12-Factor Apps in Plain English](http://www.clearlytech.com/2014/01/04/12-factor-apps-plain-english/)
+- [12-Factor Principles](https://12factor.net/)
+
+## License
+
+1. All content is licensed under a CC­BY­NC­SA 4.0 license.
+2. All software code is licensed under GNU GPLv3. For commercial use or alternative licensing, please contact [legal@ga.co.](mailto:legal@ga.co)
