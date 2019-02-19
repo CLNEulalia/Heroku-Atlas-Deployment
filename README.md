@@ -118,4 +118,46 @@ MLab (`mlab.com`) is a cloud-based database service that hosts a protected Mongo
 
 Today, we will set up an MLab account and database to host our `todo` database from MongoDB.
 
+### Deployment Step-by-Step
+
+Deployment is essentially an exercise in following directions. Follow the step-by-step instructions below to deploy your Todo App. Pay attention to the notes and hints following each prompt! Fully read each prompt (including the notes) before executing each step.
+
+#### Set up Heroku
+
+1. Sign up for a free [Heroku](https://www.heroku.com/) account.
+
+2. Follow the instructions [here](https://devcenter.heroku.com/articles/heroku-cli) to download the Heroku CLI.
+    > In your terminal, you will run the command `brew tap heroku/brew && brew install heroku`
+
+3. From your project directory, create an app on Heroku `$ heroku create <your-app-name>`
+    > Make sure you are in your Todo App project directory before you run this command
+    > `heroku create` prepares Heroku to receive your code. Heroku will randomly create an app name for you if you don't specify one
+    > If you choose to name your application, you will need to use a unique name (something someone else has not used before). If the name is taken, Heroku will prompt you to choose something new.
+
+#### Set up MLab
+
+4. Go to [MLab](https://mlab.com/) and sign up for an account, or sign in if you have one already.
+
+5. Create a new database by clicking the '+ Create new' button in MongoDB Deployments.
+
+// ADD SCREEN SHOT HERE
+
+6. Select AWS (Amazon Web Services) as your Cloud Provider and "Sandbox" (the free version!) as the Plan Type. Click Continue at the right bottom of the screen.
+
+// ADD SCREEN SHOT HERE
+
+7. Choose your region and click Continue.
+
+8. Name your database and click Continue. You will be redirected to the Order Confirmation page. Review your order (make sure it's free!) and click Submit Order.
+
+9. You will be redirected to your MLab account homepage, where your databases are listed. Click on the database you've just created.
+
+10. Next, you will create a new user. Click on the Users tab and click 'Add database user'. You will be prompted to provide a Database username and Database password.
+> This is *not* the user with which you logged in to MLab. "User" refers to an app that has access to your database, and ***not your mlab account/username***.
+> Create a Database username and Database password that you will remember, or write it down somewhere. You will need this information again later.
+> Do not use any special characters! Special characters can complicate the proceess when configuring your MLab database with Heroku.
+> Do not check 'Make read-only'. Full CRUD functionality will not work with a read-only database.
+
+// ADD SCREEN SHOT HERE
+
 
