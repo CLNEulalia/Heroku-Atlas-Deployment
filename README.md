@@ -141,12 +141,10 @@ Deployment is essentially an exercise in following directions. Follow the step-b
 4. Go to [MLab](https://mlab.com/) and sign up for an account, or sign in if you have one already.
 
 5. Create a new database by clicking the '+ Create new' button in MongoDB Deployments.
-
-// ADD SCREEN SHOT HERE
+    ![Step 5 Screenshot](./images/step5.png)
 
 6. Select AWS (Amazon Web Services) as your Cloud Provider and "Sandbox" (the free version!) as the Plan Type. Click Continue at the right bottom of the screen.
-
-// ADD SCREEN SHOT HERE
+    ![Step 6 Screenshot](./images/step6.png)
 
 7. Choose your region and click Continue.
 
@@ -163,7 +161,7 @@ Deployment is essentially an exercise in following directions. Follow the step-b
 
     > NOTE: Do not check 'Make read-only'. Full CRUD functionality will not work with a read-only database.
 
-// ADD SCREEN SHOT HERE
+    ![Step 10 Screenshot](./images/step10.png)
 
 #### Heroku & Node Setup
 
@@ -209,7 +207,9 @@ The code below is stating that we should use the MLab URI (in other words, the l
 
     > NOTE: You must copy this from your own database to capture your unique database id numbers.
 
-    > NOTE: You will still need to manually substitue the `dbuser` and `dbpassword` with the one you created in the next step.
+    > NOTE: You will still need to manually substitute the `dbuser` and `dbpassword` with the one you created in the next step.
+
+    ![Step 15 Screenshot](./images/step15.png)
 
 16. Set the URI you just copied as an environment variable called `MLAB_URL` using `heroku config:set`, filling in the `dbuser` and `dbpassword` you created on the "Users" page. Run the following in your project folder...
 
