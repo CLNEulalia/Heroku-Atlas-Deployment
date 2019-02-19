@@ -119,7 +119,7 @@ MLab (`mlab.com`) is a cloud-based database service that hosts a protected Mongo
 
 Today, we will set up an MLab account and database to host our `todo` database from MongoDB.
 
-### Deployment Step-by-Step
+### Deployment in 20 Easy Steps
 
 Deployment is essentially an exercise in following directions. Follow the step-by-step instructions below to deploy your Todo App. Pay attention to the notes and hints following each prompt! Fully read each prompt (including the notes) before executing each step.
 
@@ -223,3 +223,21 @@ The code below is stating that we should use the MLab URI (in other words, the l
 
     > NOTE: Assigning environmental variables using `heroku config:set` is very similar to using `export`, the difference being accessibility. Variables assigned using the heroku command are only accessible from the production app deployed on heroku.
 
+#### Deploying to Heroku
+
+17. Push your code to Heroku remote. Because you are on the `solution` branch of the Todo App, you will need to run `$ git push heroku solution:master` in your terminal. This ensures that your most up-to-date code -- a.k.a. our `solution` branch is deployed.
+    > NOTE: If you are deploying to Heroku from the master branch, you can run the command `$ git push heroku master`.
+
+18. Seed your MLab database by running the command `$ heroku run node db/seed.js`.
+    > NOTE: `heroku run` allows you to run js files on the heroku server. We can seed our database on heroku using the same seed file we used locally.
+
+19. Open your application! Run the command `$ heroku open` in your terminal. This will launch your production app in a new browser tab.
+
+20. **Not working?** Check your Heroku log for helpful errors by running the command `$ heroku logs --tail` in your terminal.
+    > NOTE: You may notice that these errors do not seem particularly helpful. Instead of focusing on the Heroku errors, pay attention to the Node errors in your terminal. They will often provide you with more direction.
+
+    > NOTE: Still stuck? Check out the [Heroku Error Codes Documentation](https://devcenter.heroku.com/articles/error-codes).
+
+    > NOTE: A common error that students come across is file name case sensitivity. Check out [this documentation](https://stackoverflow.com/questions/10523849/changing-capitalization-of-filenames-in-git) on changing the capitalization of filenames in Git.
+
+GREAT JOB!! YOU HAVE SUCCESSFULL DEPLOYED YOUR FIRST APP!!
