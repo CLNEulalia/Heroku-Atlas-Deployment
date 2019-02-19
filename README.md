@@ -233,11 +233,30 @@ The code below is stating that we should use the MLab URI (in other words, the l
 
 19. Open your application! Run the command `$ heroku open` in your terminal. This will launch your production app in a new browser tab.
 
-20. **Not working?** Check your Heroku log for helpful errors by running the command `$ heroku logs --tail` in your terminal.
-    > NOTE: You may notice that these errors do not seem particularly helpful. Instead of focusing on the Heroku errors, pay attention to the Node errors in your terminal. They will often provide you with more direction.
+20. You just successfully deployed your first app! You should be proud, so pat yourself on the back, give your neighbor a high five, call your parents, and share this milestone with someone you love.
 
-    > NOTE: Still stuck? Check out the [Heroku Error Codes Documentation](https://devcenter.heroku.com/articles/error-codes).
+## Solving Delpoyment Issues
 
-    > NOTE: A common error that students come across is file name case sensitivity. Check out [this documentation](https://stackoverflow.com/questions/10523849/changing-capitalization-of-filenames-in-git) on changing the capitalization of filenames in Git.
+**Not working?** Don't worry! Debugging is a part of your life now. Check out these tips on solivng deployment issues.
 
-GREAT JOB!! YOU HAVE SUCCESSFULL DEPLOYED YOUR FIRST APP!!
+### Google is Your Best Friend
+
+More often that not, solving deployment issues requires a good deal of Googling. Don't expect to find a silver bullet -- often we must go through many different issues other users may have encountered to understand our own.
+
+What should you Google?
+
+- If you aren't able to deploy, Google the error that shows up in your terminal after trying to push your app.
+- If you are able to deploy but your app doesn't load/function properly, see what shows up after running `$ heroku logs --tail` in the terminal.
+
+### Heroku Errors v. Node Errors
+
+You may notice that the errors you receive after running `$ heroku logs --tail` are not always detailed or particularly helpful.
+
+- Instead of focusing on the Heroku errors, pay attention to the Node errors in your terminal. They will often provide you with more direction.
+- Still stuck? Check out the [Heroku Error Codes Documentation](https://devcenter.heroku.com/articles/error-codes).
+
+> NOTE: A common error that students come across is file name case sensitivity. Check out [this documentation](https://stackoverflow.com/questions/10523849/changing-capitalization-of-filenames-in-git) on changing the capitalization of filenames in Git.
+
+### Help Each Other Out!
+
+If you notice somebody running into the same problem as you, try working together on debugging it!
