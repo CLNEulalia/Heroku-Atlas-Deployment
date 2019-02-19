@@ -141,9 +141,11 @@ Deployment is essentially an exercise in following directions. Follow the step-b
 4. Go to [MLab](https://mlab.com/) and sign up for an account, or sign in if you have one already.
 
 5. Create a new database by clicking the '+ Create new' button in MongoDB Deployments.
+
     ![Step 5 Screenshot](./images/step5.png)
 
 6. Select AWS (Amazon Web Services) as your Cloud Provider and "Sandbox" (the free version!) as the Plan Type. Click Continue at the right bottom of the screen.
+
     ![Step 6 Screenshot](./images/step6.png)
 
 7. Choose your region and click Continue.
@@ -153,6 +155,9 @@ Deployment is essentially an exercise in following directions. Follow the step-b
 9. You will be redirected to your MLab account homepage, where your databases are listed. Click on the database you've just created.
 
 10. Next, you will create a new user. Click on the Users tab and click 'Add database user'. You will be prompted to provide a Database username and Database password.
+
+    ![Step 10 Screenshot](./images/step10.png)
+
     > NOTE: This is **not** the user with which you logged in to MLab. "User" refers to an app that has access to your database, and **not your MLab account/username**.
 
     > NOTE: Create a Database username and Database password that you will remember, or write it down somewhere. You will need this information again later.
@@ -160,8 +165,6 @@ Deployment is essentially an exercise in following directions. Follow the step-b
     > NOTE: Do not use any special characters! Special characters can complicate the proceess when configuring your MLab database with Heroku.
 
     > NOTE: Do not check 'Make read-only'. Full CRUD functionality will not work with a read-only database.
-
-    ![Step 10 Screenshot](./images/step10.png)
 
 #### Heroku & Node Setup
 
@@ -205,11 +208,11 @@ The code below is stating that we should use the MLab URI (in other words, the l
 
 15. Go back to your MLab database in your browser. At the top of the page under **To connect using a driver via the standard MongoDB URI**, copy the MongoDB URI.
 
+    ![Step 15 Screenshot](./images/step15.png)
+
     > NOTE: You must copy this from your own database to capture your unique database id numbers.
 
     > NOTE: You will still need to manually substitute the `dbuser` and `dbpassword` with the one you created in the next step.
-
-    ![Step 15 Screenshot](./images/step15.png)
 
 16. Set the URI you just copied as an environment variable called `MLAB_URL` using `heroku config:set`, filling in the `dbuser` and `dbpassword` you created on the "Users" page. Run the following in your project folder...
 
