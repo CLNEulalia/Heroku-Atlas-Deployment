@@ -4,10 +4,9 @@
 
 - Define deployment
 - Describe the difference between development, test, and production environments
-- Deploy a Node App using Heroku
-- Set up a Mongoose database using MLab
-- Describe the major points of a 12-factor application
 - Use environmental variables to keep sensitive data out of code
+- Set up a Mongoose database using MLab
+- Deploy a Node App using Heroku
 
 ## About Deployment
 
