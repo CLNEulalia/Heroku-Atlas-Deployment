@@ -14,7 +14,7 @@
 ### What is Deployment?
 
 Deployment is the act of putting an app up on one or more internet-connected servers that allow users to access and use the app.
-> What changes in an application when it is deployed?
+> NOTE: What changes in an application when it is deployed?
 
 ### Requirements for Deployment
 
@@ -69,16 +69,16 @@ $ cd <your-node-project>
 $ node
 > console.log(process.env)
 ```
-> What are some of the listed variables? Why would they be stored here?
+> NOTE: What are some of the listed variables? Why would they be stored here?
 
 You can create a new environmental variable in the terminal too! (terminal, not node!)
 
 ```bash
 $ export <YOUR_ENVIRONMENTAL_VARIABLE_NAME>=<variableValue>
 ```
-> Make sure there are no spaces next to the equals sign!
+> NOTE: Make sure there are no spaces next to the equals sign!
 
-> Environment variables tend to be SCREAMING_SNAKE_CASE by convention.
+> NOTE: Environment variables tend to be SCREAMING_SNAKE_CASE by convention.
 
 To test, try logging the following code from the node repl.
 ```bash
@@ -98,7 +98,7 @@ Deploying our Node-Express-Mongoose application consists of 2 sets of steps. Fir
 ## You Do: Deploy 'Todos App'
 
 Today, we will be deploying the 'solution' branch of our Todo excercise. You can clone it [here](https://git.generalassemb.ly/dc-wdi-node-express/express-to-do/tree/solution).
-> When you clone a repo, it will clone down the master branch. Make sure you `git checkout solution` to switch to the ***solution*** branch once you've cloned!
+> NOTE: When you clone a repo, it will clone down the master branch. Make sure you `git checkout solution` to switch to the ***solution*** branch once you've cloned!
 
 ### Heroku
 
@@ -128,14 +128,14 @@ Deployment is essentially an exercise in following directions. Follow the step-b
 1. Sign up for a free [Heroku](https://www.heroku.com/) account.
 
 2. Follow the instructions [here](https://devcenter.heroku.com/articles/heroku-cli) to download the Heroku CLI.
-    > In your terminal, you will run the command `brew tap heroku/brew && brew install heroku`
+    > NOTE: In your terminal, you will run the command `brew tap heroku/brew && brew install heroku`
 
 3. From your project directory, create an app on Heroku `$ heroku create <your-app-name>`
-    > Make sure you are in your Todo App project directory before you run this command
+    > NOTE: Make sure you are in your Todo App project directory before you run this command
 
-    > `heroku create` prepares Heroku to receive your code. Heroku will randomly create an app name for you if you don't specify one
+    > NOTE: `heroku create` prepares Heroku to receive your code. Heroku will randomly create an app name for you if you don't specify one
 
-    > If you choose to name your application, you will need to use a unique name (something someone else has not used before). If the name is taken, Heroku will prompt you to choose something new.
+    > NOTE: If you choose to name your application, you will need to use a unique name (something someone else has not used before). If the name is taken, Heroku will prompt you to choose something new.
 
 #### Set up MLab
 
@@ -156,14 +156,52 @@ Deployment is essentially an exercise in following directions. Follow the step-b
 9. You will be redirected to your MLab account homepage, where your databases are listed. Click on the database you've just created.
 
 10. Next, you will create a new user. Click on the Users tab and click 'Add database user'. You will be prompted to provide a Database username and Database password.
-    > This is *not* the user with which you logged in to MLab. "User" refers to an app that has access to your database, and ***not your mlab account/username***.
+    > NOTE: This is **not** the user with which you logged in to MLab. "User" refers to an app that has access to your database, and **not your MLab account/username**.
 
-    > Create a Database username and Database password that you will remember, or write it down somewhere. You will need this information again later.
+    > NOTE: Create a Database username and Database password that you will remember, or write it down somewhere. You will need this information again later.
 
-    > Do not use any special characters! Special characters can complicate the proceess when configuring your MLab database with Heroku.
-    
-    > Do not check 'Make read-only'. Full CRUD functionality will not work with a read-only database.
+    > NOTE: Do not use any special characters! Special characters can complicate the proceess when configuring your MLab database with Heroku.
+
+    > NOTE: Do not check 'Make read-only'. Full CRUD functionality will not work with a read-only database.
 
 // ADD SCREEN SHOT HERE
+
+#### Heroku & Node Setup
+
+Next we need to let our Node app know *when* to use MLab as our database, and when to use our local DB.
+
+A built-in environment variable, `NODE_ENV` available under `process.env.NODE_ENV`, is used to define the application environment. When a Node app is deployed to Heroku, Heroku automatically sets the `NODE_ENV` variable is set as `'production'`.
+
+The code below is stating that we should use the MLab URI (in other words, the link that connects us to the MLab database) when in production, and the local database at all other times.
+
+11. In your Node app's `db/connection.js` file, or wherever you have `mongoose.connect()`, add the following...
+
+    ```js
+    if (process.env.NODE_ENV == "production") {
+        mongoose.connect (process.env.MLAB_URL)
+    } else {
+        mongoose.connect("mongodb://localhost/todo")
+    }
+    ```
+    > NOTE: In the example above, the link to the MongoDB includes the name of the database we are using, which in this case, is `todo`. When using a different database for your own projects, make sure you include the name of the actual database you want to connect.
+
+12. Next, you will need to make a minor change to `index.js`. When Heroku starts your app it will automatically assign a port to `process.env.PORT` (an environmental variable!) to be used in production. We can modify `app.listen` to accomodate Heroku's production port and our own local development port. Add the following to `index.js`...
+
+    ```js
+    app.set('port', process.env.PORT || 3001)
+
+    app.listen(app.get('port'), () => {
+        console.log(`✅ PORT: ${app.get('port')} 🌟`)
+    })
+    ```
+
+13. Heroku looks for instruction when starting your app. In this case, that instruction is to run `node index.js`. In `package.json` under `script`, add the following...
+
+    ```js
+    `"start": "node index.js"`
+    ```
+    > NOTE: Another way to do this is to define a [Procfile](https://devcenter.heroku.com/articles/getting-started-with-nodejs#define-a-procfile) in the root of your directory and include the line `web: node index.js`.
+
+14. Add, commit and push to the **solution branch** of the Todo App.
 
 
