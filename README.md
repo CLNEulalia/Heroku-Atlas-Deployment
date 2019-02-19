@@ -204,4 +204,22 @@ The code below is stating that we should use the MLab URI (in other words, the l
 
 14. Add, commit and push to the **solution branch** of the Todo App.
 
+#### Heroku & MLab Configuration
+
+15. Go back to your MLab database in your browser. At the top of the page under **To connect using a driver via the standard MongoDB URI**, copy the MongoDB URI.
+
+    > NOTE: You must copy this from your own database to capture your unique database id numbers.
+
+    > NOTE: You will still need to manually substitue the `dbuser` and `dbpassword` with the one you created in the next step.
+
+16. Set the URI you just copied as an environment variable called `MLAB_URL` using `heroku config:set`, filling in the `dbuser` and `dbpassword` you created on the "Users" page. Run the following in your project folder...
+
+    ```bash
+    $ heroku config:set MLAB_URL=mongodb://<your_user_login>:<your_user_password>@ds012345.mlab.com:12345/<your_db_name>
+    ```
+    > NOTE: Do not copy the above command. The database id numbers in the URI should match the URI that you copied from your own MLab database. The **sample** command above includes id numbers of `012345` and `12345`. Does your own MLab URI match this? Probably not.
+
+    > NOTE: Your database name will be included in the URI you copied from your MLab database. You will need to manually add the `dbuser` and `dbpassword` that you created in Step 10.
+
+    > NOTE: Assigning environmental variables using `heroku config:set` is very similar to using `export`, the difference being accessibility. Variables assigned using the heroku command are only accessible from the production app deployed on heroku.
 
