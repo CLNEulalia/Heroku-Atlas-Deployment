@@ -120,7 +120,7 @@ Today, we will set up an MLab account and database to host our `todo` database f
 
 ### Deployment in 20 Easy Steps
 
-Deployment is essentially an exercise in following directions. Follow the step-by-step instructions below to deploy your Todo App. Pay attention to the notes and hints following each prompt! Fully read each prompt (including the notes) before executing each step.
+Deployment is essentially an exercise in following directions. Follow the step-by-step instructions below to deploy your Todo App. Pay attention to the notes following each prompt! Fully read each prompt (including the notes) before executing each step.
 
 #### Set up Heroku
 
@@ -236,6 +236,8 @@ The code below is stating that we should use the MLab URI (in other words, the l
 19. Open your application! Run the command `$ heroku open` in your terminal. This will launch your production app in a new browser tab.
 
 20. You just successfully deployed your first app! You should be proud, so pat yourself on the back, give your neighbor a high five, call your parents, and share this milestone with someone you love.
+
+![Michelle Tanner](https://media.giphy.com/media/YJ5OlVLZ2QNl6/giphy.gif)
 
 ## Solving Delpoyment Issues
 
