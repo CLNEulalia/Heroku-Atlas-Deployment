@@ -114,7 +114,7 @@ Heroku also has a FREE pricing tier!
 
 ### MLab
 
-MLab (`mlab.com`) is a cloud-based database service that hosts a protected MongoDB that can be easily integrated with a Heroku application.
+[MLab](https://mlab.com) is a cloud-based database service that hosts a protected MongoDB that can be easily integrated with a Heroku application.
 
 Today, we will set up an MLab account and database to host our `todo` database from MongoDB.
 
@@ -235,7 +235,7 @@ The code below is stating that we should use the MLab URI (in other words, the l
 
 19. Open your application! Run the command `$ heroku open` in your terminal. This will launch your production app in a new browser tab.
 
-20. You just successfully deployed your first app! You should be proud, so pat yourself on the back, give your neighbor a high five, call your parents, and share this milestone with someone you love.
+20. You just successfully deployed your first app! You should be proud, so pat yourself on the back, give your neighbor a high five, call your parents, and share this milestone with someone you love!
 
 ![Michelle Tanner](https://media.giphy.com/media/YJ5OlVLZ2QNl6/giphy.gif)
 
