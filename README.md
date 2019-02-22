@@ -1,11 +1,11 @@
-# Deployment for Node-Mongo-Express: Heroku & MLab
+# Deployment for Node-Mongo-Express: Heroku & Atlas
 
 ## Learning Objectives
 
 - Define deployment
 - Describe the difference between development, test, and production environments
 - Use environmental variables to keep sensitive data out of code
-- Set up a Mongoose database using MLab
+- Set up a Mongoose database using Atlas
 - Deploy a Node App using Heroku
 
 ## About Deployment
@@ -13,6 +13,7 @@
 ### What is Deployment?
 
 Deployment is the act of putting an app up on one or more internet-connected servers that allow users to access and use the app.
+
 > NOTE: What changes in an application when it is deployed?
 
 ### Requirements for Deployment
@@ -87,7 +88,6 @@ process.env.<YOUR_ENVIRONMENTAL_VARIABLE_NAME>
 #### **Bonus: dotenv**
 
 [dotenv](https://github.com/motdotla/dotenv) is a node package used to store sensitive information in the environment. It's a handy tool but not strictly necessary for this deployment. It is a fantastic practice, and accords with [12-factor principles](https://12factor.net/).
-
 ## Break (10 min)
 
 ## Deploying Node-Express-Mongoose Applications
@@ -96,12 +96,19 @@ Deploying our Node-Express-Mongoose application consists of 2 sets of steps. Fir
 
 ## You Do: Deploy 'Todos App'
 
-Today, we will be deploying the 'solution' branch of our Todo excercise. You can clone it [here](https://git.generalassemb.ly/dc-wdi-node-express/express-to-do/tree/solution).
-> NOTE: When you clone a repo, it will clone down the master branch. Make sure you `git checkout solution` to switch to the ***solution*** branch once you've cloned!
+Today, we will be deploying the 'solution' branch of our Todo excercise. You can
+clone it
+[here](https://git.generalassemb.ly/dc-wdi-node-express/express-to-do/tree/solution).
+
+> NOTE: When you clone a repo, it will clone down the master branch. Make sure
+> you `git checkout solution` to switch to the ***solution*** branch once you've
+> cloned!
 
 ### Heroku
 
-We'll be using a service called Heroku to deploy our apps, because it makes all the steps for deployment easy, simplifying and expediting the process. For example, Heroku automatically does the following...
+We'll be using a service called Heroku to deploy our apps, because it makes all
+the steps for deployment easy, simplifying and expediting the process. For
+example, Heroku automatically does the following...
 
 - Starts up a new server when we run `heroku create`, and installs all the necessary services
 - Adds a new remote to our Git repo, so we can just run `git push heroku master` to copy our code over
@@ -112,73 +119,83 @@ We'll be using a service called Heroku to deploy our apps, because it makes all 
 
 Heroku also has a FREE pricing tier!
 
-### MLab
+### Mongo Atlas
 
-[MLab](https://mlab.com) is a cloud-based database service that hosts a protected MongoDB that can be easily integrated with a Heroku application.
+[Mongo Atlas](https://cloud.mongodb.com) is a cloud-based database service that
+hosts a protected MongoDB instance that you can easily integrate with an
+application deployed on Heroku.
 
-Today, we will set up an MLab account and database to host our `todo` database from MongoDB.
+Today, you will need to set up an Atlas account and database to hour our `todo`
+database.
 
 ### Deployment in 20 Easy Steps
 
-Deployment is essentially an exercise in following directions. Follow the step-by-step instructions below to deploy your Todo App. Pay attention to the notes following each prompt! Fully read each prompt (including the notes) before executing each step.
+Deployment is essentially an exercise in following directions. Follow the
+step-by-step instructions below to deploy your Todo App. Pay attention to the
+notes following each prompt! Fully read each prompt (including the notes) before
+executing each step.
 
 #### Set up Heroku
 
 1. Sign up for a free [Heroku](https://www.heroku.com/) account.
 
 2. Follow the instructions [here](https://devcenter.heroku.com/articles/heroku-cli) to download the Heroku CLI.
+
     > NOTE: In your terminal, you will run the command `brew tap heroku/brew && brew install heroku`
 
 3. From your project directory, create an app on Heroku `$ heroku create <your-app-name>`
+
     > NOTE: Make sure you are in your Todo App project directory before you run this command
 
     > NOTE: `heroku create` prepares Heroku to receive your code. Heroku will randomly create an app name for you if you don't specify one
 
     > NOTE: If you choose to name your application, you will need to use a unique name (something someone else has not used before). If the name is taken, Heroku will prompt you to choose something new.
 
-#### Set up MLab
+#### Set up MongoDB Atlas
 
-4. Go to [MLab](https://mlab.com/) and sign up for an account, or sign in if you have one already.
+4. Go to [Mongo Atlas](https://cloud.mongodb.com) and sign up for an account, or
+   sign in if you have one already.
 
-5. Create a new database by clicking the '+ Create new' button in MongoDB Deployments.
+5. In the sidebar on the left, open the dropdown menu title `context` and select
+   `New Project`
 
-    ![Step 5 Screenshot](./images/step5.png)
+6. Finish creating your new project and click the "Build a Cluster" button. **Be
+   sure to select the free option for building your cluster!** Your cluster
+   could take a minute to to finish building.
 
-6. Select AWS (Amazon Web Services) as your Cloud Provider and "Sandbox" (the free version!) as the Plan Type. Click Continue at the right bottom of the screen.
+7. When your cluster is finished, click the "Connect" button. Whitelist your
+   current IP. You'll have to come back and white list the IP address from
+   Heroku later! Also create a username and password. **Remember the username
+   and password you use for your database, you'll need them in a later step!**
 
-    ![Step 6 Screenshot](./images/step6.png)
+  > NOTE: This is **not** the user with which you logged in to Atlas. "User"
+  > refers to an app that has access to your database, and **not your Atlas
+  > account/username**.
 
-7. Choose your region and click Continue.
+  > NOTE: Create a Database username and Database password that you will
+  > remember, or write it down somewhere. You will need this information again
+  > later.
 
-8. Name your database and click Continue. You will be redirected to the Order Confirmation page. Review your order (make sure it's free!) and click Submit Order.
+  > NOTE: Do not use any special characters! Special characters can complicate
+  > the process when configuring your Atlas database with Heroku.
 
-9. You will be redirected to your MLab account homepage, where your databases are listed. Click on the database you've just created.
-
-10. Next, you will create a new user. Click on the Users tab and click 'Add database user'. You will be prompted to provide a Database username and Database password.
-
-    ![Step 10 Screenshot](./images/step10.png)
-
-    > NOTE: This is **not** the user with which you logged in to MLab. "User" refers to an app that has access to your database, and **not your MLab account/username**.
-
-    > NOTE: Create a Database username and Database password that you will remember, or write it down somewhere. You will need this information again later.
-
-    > NOTE: Do not use any special characters! Special characters can complicate the proceess when configuring your MLab database with Heroku.
-
-    > NOTE: Do not check 'Make read-only'. Full CRUD functionality will not work with a read-only database.
+  > NOTE: Do not check 'Make read-only'. Full CRUD functionality will not work with a read-only database.
 
 #### Heroku & Node Setup
 
-Next we need to let our Node app know *when* to use MLab as our database, and when to use our local DB.
+Next we need to let our Node app know *when* to use Mongo Atlas as our database, and when to use our local DB.
 
 A built-in environment variable, `NODE_ENV` available under `process.env.NODE_ENV`, is used to define the application environment. When a Node app is deployed to Heroku, Heroku automatically sets the `NODE_ENV` variable is set as `'production'`.
 
-The code below is stating that we should use the MLab URI (in other words, the link that connects us to the MLab database) when in production, and the local database at all other times.
+The code below is stating that we should use the Mongo Atlas URI (in other
+words, the link that connects us to the Atlas database) when in production, and
+the local database at all other times.
 
 11. In your Node app's `db/connection.js` file, or wherever you have `mongoose.connect()`, add the following...
 
     ```js
     if (process.env.NODE_ENV == "production") {
-        mongoose.connect (process.env.MLAB_URL)
+        mongoose.connect (process.env.DB_URL)
     } else {
         mongoose.connect("mongodb://localhost/todo")
     }
@@ -204,33 +221,37 @@ The code below is stating that we should use the MLab URI (in other words, the l
 
 14. Add, commit and push to the **solution branch** of the Todo App.
 
-#### Heroku & MLab Configuration
+#### Heroku & Atlas Configuration
 
-15. Go back to your MLab database in your browser. At the top of the page under **To connect using a driver via the standard MongoDB URI**, copy the MongoDB URI.
+15. Go back to your Atlas database in your browser. Click on "Connect" and then
+    the "Choose a Connection Method" button, then "Connect Your Application",
+    then "Short SRV Connection String". **Copy the connection string!**
 
-    ![Step 15 Screenshot](./images/step15.png)
+![](./images/step15.png)
 
-    > NOTE: You must copy this from your own database to capture your unique database id numbers.
+> NOTE: You must copy this from your own database to capture your unique database id numbers.
 
-    > NOTE: You will still need to manually substitute the `dbuser` and `dbpassword` with the one you created in the next step.
+> NOTE: You will still need to manually substitute the `USERNAME` and `PASSWORD` with the one you created in the next step.
 
-16. Set the URI you just copied as an environment variable called `MLAB_URL` using `heroku config:set`, filling in the `dbuser` and `dbpassword` you created on the "Users" page. Run the following in your project folder...
+16. Set the URI you just copied as an environment variable called `DB_URL` using `heroku config:set`, filling in the `<USERNAME>` and `<PASSWORD>` you created on the "Users" page. Run the following in your project folder...
 
     ```bash
-    $ heroku config:set MLAB_URL=mongodb://<your_user_login>:<your_user_password>@ds012345.mlab.com:12345/<your_db_name>
+    $ heroku config:set DB_URL=mongodb+srv://<USERNAME>:<PASSWORD>@tododb-kd24g.mongodb.net/test?retryWrites=true
     ```
-    > NOTE: Do not copy the above command. The database id numbers in the URI should match the URI that you copied from your own MLab database. The **sample** command above includes id numbers of `012345` and `12345`. Does your own MLab URI match this? Probably not.
+    > NOTE: Do not copy the above command. The database id numbers in the URI should match the URI that you copied from your own Atlas database. The **sample** command above includes id numbers of `012345` and `12345`. Does your own Atlas URI match this? Probably not.
 
-    > NOTE: Your database name will be included in the URI you copied from your MLab database. You will need to manually add the `dbuser` and `dbpassword` that you created in Step 10.
+    > NOTE: Your database name will be included in the URI you copied from your Atlas database. You will need to manually add the `USERNAME` and `PASSWORD` that you created in Step 10.
 
     > NOTE: Assigning environmental variables using `heroku config:set` is very similar to using `export`, the difference being accessibility. Variables assigned using the heroku command are only accessible from the production app deployed on heroku.
 
 #### Deploying to Heroku
 
 17. Push your code to Heroku remote. Because you are on the `solution` branch of the Todo App, you will need to run `$ git push heroku solution:master` in your terminal. This ensures that your most up-to-date code -- a.k.a. our `solution` branch is deployed.
+
     > NOTE: If you are deploying to Heroku from the master branch, you can run the command `$ git push heroku master`.
 
-18. Seed your MLab database by running the command `$ heroku run node db/seed.js`.
+18. Seed your Atlas database by running the command `$ heroku run node db/seed.js`.
+
     > NOTE: `heroku run` allows you to run js files on the heroku server. We can seed our database on heroku using the same seed file we used locally.
 
 19. Open your application! Run the command `$ heroku open` in your terminal. This will launch your production app in a new browser tab.
@@ -239,7 +260,7 @@ The code below is stating that we should use the MLab URI (in other words, the l
 
 ![Michelle Tanner](https://media.giphy.com/media/YJ5OlVLZ2QNl6/giphy.gif)
 
-## Solving Delpoyment Issues
+## Solving Deployment Issues
 
 **Not working?** Don't worry! Debugging is a part of your life now. Check out these tips on solivng deployment issues.
 
