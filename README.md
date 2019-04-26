@@ -210,9 +210,7 @@ executing each step.
    all the default settings. Your cluster could take a few minutes to to finish
    building.
 
-7. When your cluster is finished, click the "Connect" button. Whitelist your
-   current IP. You'll have to come back and white list the IP address from
-   Heroku later! Also create a username and password. **Remember the username
+7. When your cluster is finished, click the "Connect" button. Add 0.0.0.0/0 for the whitelisted IP address. Also create a username and password. **Remember the username
    and password you use for your database, you'll need them in a later step!**
 
 > NOTE: This is **not** the user with which you logged in to Atlas. "User"
@@ -318,20 +316,16 @@ the local database at all other times.
 
     > NOTE: Your database name will be included in the URI you copied from your
     > Atlas database. You will need to manually add the `USERNAME` and
-    > `PASSWORD` that you created in Step 10.
+    > `PASSWORD` that you created in Step 10. **DONT FORGET TO PUT QUOTES AROUND THE URL PART**
 
     > NOTE: Assigning environmental variables using `heroku config:set` is very
     > similar to using `export`, the difference being accessibility. Variables
     > assigned using the heroku command are only accessible from the production
     > app deployed on heroku.
 
-17. Go back to the Atlas configuration screen, and click on the `Security` tab, then on the `IP Whitelist` tab. Click the `+Add IP Address` button and type in `0.0.0.0/0` into the `Whitelist Entry` field. This will allow any user on the internet to connect to your database.
-
-> Unfortunately, we have to do it this way because heroku doesn't publish their IP addresses manually.
-
 #### Deploying to Heroku
 
-18. Push your code to Heroku remote. Because you are on the `solution` branch of
+17. Push your code to Heroku remote. Because you are on the `solution` branch of
     the Todo App, you will need to run `$ git push heroku solution:master` in
     your terminal. This ensures that your most up-to-date code -- a.k.a. our
     `solution` branch is deployed.
@@ -339,16 +333,16 @@ the local database at all other times.
     > NOTE: If you are deploying to Heroku from the master branch, you can run
     > the command `$ git push heroku master`.
 
-19. Seed your Atlas database by running the command
+18. Seed your Atlas database by running the command
     `$ heroku run node db/seed.js`.
 
     > NOTE: `heroku run` allows you to run js files on the heroku server. We can
     > seed our database on heroku using the same seed file we used locally.
 
-20. Open your application! Run the command `$ heroku open` in your terminal.
+19. Open your application! Run the command `$ heroku open` in your terminal.
     This will launch your production app in a new browser tab.
 
-21. You just successfully deployed your first app! You should be proud, so pat
+20. You just successfully deployed your first app! You should be proud, so pat
     yourself on the back, give your neighbor a high five, call your parents, and
     share this milestone with someone you love!
 
