@@ -165,7 +165,7 @@ application deployed on Heroku.
 Today, you will need to set up an Atlas account and database to hour our `todo`
 database.
 
-### Deployment in 20 Easy Steps
+### Deployment in 21 Easy Steps
 
 Deployment is essentially an exercise in following directions. Follow the
 step-by-step instructions below to deploy your Todo App. Pay attention to the
@@ -190,7 +190,8 @@ executing each step.
    > this command
 
    > NOTE: `heroku create` prepares Heroku to receive your code. Heroku will
-   > randomly create an app name for you if you don't specify one
+   > randomly create an app name for you if you don't specify one. You may need
+   > to login before you can create an app.
 
    > NOTE: If you choose to name your application, you will need to use a unique
    > name (something someone else has not used before). If the name is taken,
@@ -235,7 +236,7 @@ and when to use our local DB.
 A built-in environment variable, `NODE_ENV` available under
 `process.env.NODE_ENV`, is used to define the application environment. When a
 Node app is deployed to Heroku, Heroku automatically sets the `NODE_ENV`
-variable is set as `'production'`.
+variable to `'production'`.
 
 The code below is stating that we should use the Mongo Atlas URI (in other
 words, the link that connects us to the Atlas database) when in production, and
@@ -272,16 +273,18 @@ the local database at all other times.
     ```
 
 13. Heroku looks for instruction when starting your app. In this case, that
-    instruction is to run `node index.js`. In `package.json` under `script`, add
-    the following...
+    instruction is to run `node index.js`. In `package.json` under `scripts`,
+    add the following...
 
-    ```js
-    ;`"start": "node index.js"`
-    ```
+```diff
+"scripts": {
++    "start": "node index.js"
+}
+```
 
-    > NOTE: Another way to do this is to define a
-    > [Procfile](https://devcenter.heroku.com/articles/getting-started-with-nodejs#define-a-procfile)
-    > in the root of your directory and include the line `web: node index.js`.
+> NOTE: Another way to do this is to define a
+> [Procfile](https://devcenter.heroku.com/articles/getting-started-with-nodejs#define-a-procfile)
+> in the root of your directory and include the line `web: node index.js`.
 
 14. Add, commit and push to the **solution branch** of the Todo App.
 
@@ -301,10 +304,11 @@ the local database at all other times.
 
 16. Set the URI you just copied as an environment variable called `DB_URL` using
     `heroku config:set`, filling in the `<USERNAME>` and `<PASSWORD>` you
-    created on the "Users" page. Run the following in your project folder...
+    created on the "Users" page. Run the following in your terminal (in your
+    project's folder)...
 
     ```bash
-    $ heroku config:set DB_URL=mongodb+srv://<USERNAME>:<PASSWORD>@tododb-kd24g.mongodb.net/test?retryWrites=true
+    $ heroku config:set DB_URL="mongodb+srv://<USERNAME>:<PASSWORD>@tododb-kd24g.mongodb.net/test?retryWrites=true"
     ```
 
     > NOTE: Do not copy the above command. The database id numbers in the URI
@@ -321,9 +325,13 @@ the local database at all other times.
     > assigned using the heroku command are only accessible from the production
     > app deployed on heroku.
 
+17. Go back to the Atlas configuration screen, and click on the `Security` tab, then on the `IP Whitelist` tab. Click the `+Add IP Address` button and type in `0.0.0.0/0` into the `Whitelist Entry` field. This will allow any user on the internet to connect to your database.
+
+> Unfortunately, we have to do it this way because heroku doesn't publish their IP addresses manually.
+
 #### Deploying to Heroku
 
-17. Push your code to Heroku remote. Because you are on the `solution` branch of
+18. Push your code to Heroku remote. Because you are on the `solution` branch of
     the Todo App, you will need to run `$ git push heroku solution:master` in
     your terminal. This ensures that your most up-to-date code -- a.k.a. our
     `solution` branch is deployed.
@@ -331,16 +339,16 @@ the local database at all other times.
     > NOTE: If you are deploying to Heroku from the master branch, you can run
     > the command `$ git push heroku master`.
 
-18. Seed your Atlas database by running the command
+19. Seed your Atlas database by running the command
     `$ heroku run node db/seed.js`.
 
     > NOTE: `heroku run` allows you to run js files on the heroku server. We can
     > seed our database on heroku using the same seed file we used locally.
 
-19. Open your application! Run the command `$ heroku open` in your terminal.
+20. Open your application! Run the command `$ heroku open` in your terminal.
     This will launch your production app in a new browser tab.
 
-20. You just successfully deployed your first app! You should be proud, so pat
+21. You just successfully deployed your first app! You should be proud, so pat
     yourself on the back, give your neighbor a high five, call your parents, and
     share this milestone with someone you love!
 
