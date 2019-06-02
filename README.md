@@ -112,6 +112,12 @@ To test, try logging the following code from the node repl.
 process.env.<YOUR_ENVIRONMENTAL_VARIABLE_NAME>
 ```
 
+If you'd like, you can also remove the environmental variable with:
+
+```bash
+unset <YOUR_ENVIRONMENTAL_VARIABLE_NAME>
+```
+
 #### **Bonus: dotenv**
 
 [dotenv](https://github.com/motdotla/dotenv) is a node package used to store
@@ -245,9 +251,9 @@ the local database at all other times.
 
     ```js
     if (process.env.NODE_ENV == "production") {
-      mongoose.connect(process.env.DB_URL)
+      mongoose.connect(process.env.DB_URL);
     } else {
-      mongoose.connect("mongodb://localhost/todo")
+      mongoose.connect("mongodb://localhost/todo");
     }
     ```
 
@@ -263,11 +269,11 @@ the local database at all other times.
     development port. Add the following to `index.js`...
 
     ```js
-    app.set("port", process.env.PORT || 3001)
+    app.set("port", process.env.PORT || 3001);
 
     app.listen(app.get("port"), () => {
-      console.log(`✅ PORT: ${app.get("port")} 🌟`)
-    })
+      console.log(`✅ PORT: ${app.get("port")} 🌟`);
+    });
     ```
 
 13. Heroku looks for instruction when starting your app. In this case, that
