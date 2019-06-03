@@ -168,15 +168,15 @@ Heroku also has a FREE pricing tier!
 hosts a protected MongoDB instance that you can easily integrate with an
 application deployed on Heroku.
 
-Today, you will need to set up an Atlas account and database to hour our `todo`
-database.
+Today, you will need to set up an Atlas account and database to hour our
+`book-e` database.
 
 ### Deployment in 21 Easy Steps
 
 Deployment is essentially an exercise in following directions. Follow the
-step-by-step instructions below to deploy your Todo App. Pay attention to the
-notes following each prompt! Fully read each prompt (including the notes) before
-executing each step.
+step-by-step instructions below to deploy your Book-e JSON App. Pay attention to
+the notes following each prompt! Fully read each prompt (including the notes)
+before executing each step.
 
 #### Set up Heroku
 
@@ -192,8 +192,8 @@ executing each step.
 3. From your project directory, create an app on Heroku
    `$ heroku create <your-app-name>`
 
-   > NOTE: Make sure you are in your Todo App project directory before you run
-   > this command
+   > NOTE: Make sure you are in your Book-e JSON App project directory before
+   > you run this command
 
    > NOTE: `heroku create` prepares Heroku to receive your code. Heroku will
    > randomly create an app name for you if you don't specify one. You may need
@@ -255,12 +255,12 @@ the local database at all other times.
     if (process.env.NODE_ENV == "production") {
       mongoose.connect(process.env.DB_URL);
     } else {
-      mongoose.connect("mongodb://localhost/todo");
+      mongoose.connect("mongodb://localhost/book-e");
     }
     ```
 
     > NOTE: In the example above, the link to the MongoDB includes the name of
-    > the database we are using, which in this case, is `todo`. When using a
+    > the database we are using, which in this case, is `book-e`. When using a
     > different database for your own projects, make sure you include the name
     > of the actual database you want to connect.
 
@@ -292,7 +292,7 @@ the local database at all other times.
 > [Procfile](https://devcenter.heroku.com/articles/getting-started-with-nodejs#define-a-procfile)
 > in the root of your directory and include the line `web: node index.js`.
 
-14. Add, commit and push to the **solution branch** of the Todo App.
+14. Add, commit and push to the **solution branch** of the Book-e JSON App.
 
 #### Heroku & Atlas Configuration
 
@@ -335,9 +335,9 @@ the local database at all other times.
 #### Deploying to Heroku
 
 17. Push your code to Heroku remote. Because you are on the `solution` branch of
-    the Todo App, you will need to run `$ git push heroku solution:master` in
-    your terminal. This ensures that your most up-to-date code -- a.k.a. our
-    `solution` branch is deployed.
+    the Book-e JSON App, you will need to run
+    `$ git push heroku solution:master` in your terminal. This ensures that your
+    most up-to-date code -- a.k.a. our `solution` branch is deployed.
 
     > NOTE: If you are deploying to Heroku from the master branch, you can run
     > the command `$ git push heroku master`.
