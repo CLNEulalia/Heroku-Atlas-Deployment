@@ -168,7 +168,7 @@ Heroku also has a FREE pricing tier!
 hosts a protected MongoDB instance that you can easily integrate with an
 application deployed on Heroku.
 
-Today, you will need to set up an Atlas account and database to hour our
+Today, you will need to set up an Atlas account and database to host our
 `book-e` database.
 
 ### Deployment in 19 Easy Steps
