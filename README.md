@@ -276,7 +276,7 @@ the local database at all other times.
     development port. Add the following to `index.js`...
 
     ```js
-    app.set("port", process.env.PORT || 3001);
+    app.set("port", process.env.PORT || 8080);
 
     app.listen(app.get("port"), () => {
       console.log(`✅ PORT: ${app.get("port")} 🌟`);
@@ -297,7 +297,9 @@ the local database at all other times.
 > [Procfile](https://devcenter.heroku.com/articles/getting-started-with-nodejs#define-a-procfile)
 > in the root of your directory and include the line `web: node index.js`.
 
-13. Add, commit and push to the **solution branch** of the Book-e JSON App.
+13. Add and commit all changes we've made to Book-e JSON. It is a good idea to
+    push to GHE as well. **IMPORTANT** if you used the solution branch, make
+    sure you're making the commit to the solution branch.
 
 #### Heroku & Atlas Configuration
 
@@ -319,7 +321,10 @@ the local database at all other times.
     project's folder)...
 
     ```bash
-    $ heroku config:set DB_URL="mongodb+srv://<USERNAME>:<PASSWORD>@tododb-kd24g.mongodb.net/test?retryWrites=true"
+    $ heroku config:set DB_URL="mongodb+srv://<USERNAME>:<PASSWORD>@cluster0-8mjuz.mongodb.net/test?retryWrites=true"
+
+    # CONFIRM
+    $ heroku config
     ```
 
     > NOTE: Do not copy the above command. The database id numbers in the URI
