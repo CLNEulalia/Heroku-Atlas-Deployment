@@ -135,11 +135,11 @@ database that our app can connect to. Next, we'll configure our
 Node-Express-Mongoose applications to connect to this new cloud-hosted database
 and finally, deploy our application to Heroku.
 
-## You Do: Deploy 'Todos App'
+## You Do: Deploy Book-e JSON
 
-Today, we will be deploying the 'solution' branch of our Todo excercise. You can
-clone it
-[here](https://git.generalassemb.ly/dc-wdi-node-express/express-to-do/tree/solution).
+Today, we will be deploying the 'solution' branch of our Book-e JSON excercise.
+You can clone it
+[here](https://git.generalassemb.ly/dc-wdi-node-express/book-e-json/tree/solution).
 
 > NOTE: When you clone a repo, it will clone down the master branch. Make sure
 > you `git checkout solution` to switch to the **_solution_** branch once you've
@@ -216,8 +216,10 @@ executing each step.
    all the default settings. Your cluster could take a few minutes to to finish
    building.
 
-7. When your cluster is finished, click the "Connect" button. Add 0.0.0.0/0 for the whitelisted IP address. Also create a username and password. **Remember the username
-   and password you use for your database, you'll need them in a later step!**
+7. When your cluster is finished, click the "Connect" button. Add 0.0.0.0/0 for
+   the whitelisted IP address. Also create a username and password. **Remember
+   the username and password you use for your database, you'll need them in a
+   later step!**
 
 > NOTE: This is **not** the user with which you logged in to Atlas. "User"
 > refers to an app that has access to your database, and **not your Atlas
@@ -322,7 +324,8 @@ the local database at all other times.
 
     > NOTE: Your database name will be included in the URI you copied from your
     > Atlas database. You will need to manually add the `USERNAME` and
-    > `PASSWORD` that you created in Step 10. **DONT FORGET TO PUT QUOTES AROUND THE URL PART**
+    > `PASSWORD` that you created in Step 10. **DONT FORGET TO PUT QUOTES AROUND
+    > THE URL PART**
 
     > NOTE: Assigning environmental variables using `heroku config:set` is very
     > similar to using `export`, the difference being accessibility. Variables
