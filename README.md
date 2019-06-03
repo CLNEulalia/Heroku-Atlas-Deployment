@@ -171,7 +171,7 @@ application deployed on Heroku.
 Today, you will need to set up an Atlas account and database to hour our
 `book-e` database.
 
-### Deployment in 21 Easy Steps
+### Deployment in 19 Easy Steps
 
 Deployment is essentially an exercise in following directions. Follow the
 step-by-step instructions below to deploy your Book-e JSON App. Pay attention to
@@ -216,10 +216,15 @@ before executing each step.
    all the default settings. Your cluster could take a few minutes to to finish
    building.
 
-7. When your cluster is finished, click the "Connect" button. Add 0.0.0.0/0 for
-   the whitelisted IP address. Also create a username and password. **Remember
-   the username and password you use for your database, you'll need them in a
-   later step!**
+7. When your cluster is finished, click the "Connect" button.
+
+8. Add 0.0.0.0/0 for the whitelisted IP address, If you just add the current IP
+   address you can click on "Network Access" in the sidebar, then the "Add IP
+   Address" button in the top right, and finally "Allow Access from Anywhere"
+   and click Confirm.
+
+9. Also create a username and password. **Remember the username and password you
+   use for your database, you'll need them in a later step!**
 
 > NOTE: This is **not** the user with which you logged in to Atlas. "User"
 > refers to an app that has access to your database, and **not your Atlas
@@ -248,7 +253,7 @@ The code below is stating that we should use the Mongo Atlas URI (in other
 words, the link that connects us to the Atlas database) when in production, and
 the local database at all other times.
 
-11. In your Node app's `db/connection.js` file, or wherever you have
+10. In your Node app's `db/connection.js` file, or wherever you have
     `mongoose.connect()`, add the following...
 
     ```js
@@ -264,7 +269,7 @@ the local database at all other times.
     > different database for your own projects, make sure you include the name
     > of the actual database you want to connect.
 
-12. Next, you will need to make a minor change to `index.js`. When Heroku starts
+11. Next, you will need to make a minor change to `index.js`. When Heroku starts
     your app it will automatically assign a port to `process.env.PORT` (an
     environmental variable!) to be used in production. We can modify
     `app.listen` to accomodate Heroku's production port and our own local
@@ -278,7 +283,7 @@ the local database at all other times.
     });
     ```
 
-13. Heroku looks for instruction when starting your app. In this case, that
+12. Heroku looks for instruction when starting your app. In this case, that
     instruction is to run `node index.js`. In `package.json` under `scripts`,
     add the following...
 
@@ -292,11 +297,11 @@ the local database at all other times.
 > [Procfile](https://devcenter.heroku.com/articles/getting-started-with-nodejs#define-a-procfile)
 > in the root of your directory and include the line `web: node index.js`.
 
-14. Add, commit and push to the **solution branch** of the Book-e JSON App.
+13. Add, commit and push to the **solution branch** of the Book-e JSON App.
 
 #### Heroku & Atlas Configuration
 
-15. Go back to your Atlas database in your browser. Click on "Connect" and then
+14. Go back to your Atlas database in your browser. Click on "Connect" and then
     the "Choose a Connection Method" button, then "Connect Your Application",
     then "Short SRV Connection String". **Copy the connection string!**
 
@@ -308,7 +313,7 @@ the local database at all other times.
 > NOTE: You will still need to manually substitute the `USERNAME` and `PASSWORD`
 > with the one you created in the next step.
 
-16. Set the URI you just copied as an environment variable called `DB_URL` using
+15. Set the URI you just copied as an environment variable called `DB_URL` using
     `heroku config:set`, filling in the `<USERNAME>` and `<PASSWORD>` you
     created on the "Users" page. Run the following in your terminal (in your
     project's folder)...
@@ -334,7 +339,7 @@ the local database at all other times.
 
 #### Deploying to Heroku
 
-17. Push your code to Heroku remote. Because you are on the `solution` branch of
+16. Push your code to Heroku remote. Because you are on the `solution` branch of
     the Book-e JSON App, you will need to run
     `$ git push heroku solution:master` in your terminal. This ensures that your
     most up-to-date code -- a.k.a. our `solution` branch is deployed.
@@ -342,16 +347,16 @@ the local database at all other times.
     > NOTE: If you are deploying to Heroku from the master branch, you can run
     > the command `$ git push heroku master`.
 
-18. Seed your Atlas database by running the command
+17. Seed your Atlas database by running the command
     `$ heroku run node db/seed.js`.
 
     > NOTE: `heroku run` allows you to run js files on the heroku server. We can
     > seed our database on heroku using the same seed file we used locally.
 
-19. Open your application! Run the command `$ heroku open` in your terminal.
+18. Open your application! Run the command `$ heroku open` in your terminal.
     This will launch your production app in a new browser tab.
 
-20. You just successfully deployed your first app! You should be proud, so pat
+19. You just successfully deployed your first app! You should be proud, so pat
     yourself on the back, give your neighbor a high five, call your parents, and
     share this milestone with someone you love!
 
