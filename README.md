@@ -267,7 +267,7 @@ the local database at all other times.
     Then, add
 
     ```js
-    if (process.env.NODE_ENV == "production") {
+    if (process.env.NODE_ENV === "production") {
       mongoURI = process.env.DB_URL;
     } else {
       mongoURI = "mongodb://localhost/book-e";
