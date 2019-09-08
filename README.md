@@ -74,7 +74,14 @@ testing, or deploying our apps. Configuration settings often include...
 
 ### Environmental Variables
 
-Node manages application environments using 'environmental variables'.
+We do not want to keep configuration in our codebase (e.g. the code we see when
+we push to Github) for several reasons:
+
+- We do not want to expose private information such as passwords and API Keys.
+- When we push the same code to differnt environments, we need a way to
+  dynamically tell which environment we're in.
+
+Node manages application environments using "environmental variables".
 Environmental variables store data and configuration information that is defined
 outside of your codebase and pertain to the phase of the application's
 development. Storing this information separately protects sensitive information
