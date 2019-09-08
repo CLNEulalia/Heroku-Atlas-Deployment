@@ -22,11 +22,11 @@ servers that allow users to access and use the app.
 There are generally a few things we need for an app to be properly deployed:
 
 - **Server** - the server(s) must be on and connected to the internet
-- **Services** - the server(s) must be running the correct services (web,
-  database, email, etc.)
-- **Dependencies** - the server(s) must have the proper dependencies installed
 - **Executable Code** - we must get our code onto the server and be able to run
   it
+- **Dependencies** - the server(s) must have the proper dependencies installed
+- **Services** - the server(s) must be running the correct services (web,
+  database, email, etc.)
 - **Configuration** - we must configure our running app with respect to its
   deployment environment
 
@@ -233,11 +233,12 @@ before executing each step.
    > refers to an app that has access to your database, and **not your Atlas
    > account/username**.
 
-   > NOTE: Create a Database username and Database password that you will remember,
-   > or write it down somewhere. You will need this information again later.
+   > NOTE: Create a Database username and Database password that you will
+   > remember, or write it down somewhere. You will need this information again
+   > later.
 
-   > NOTE: Do not use any special characters! Special characters can complicate the
-   > process when configuring your Atlas database with Heroku.
+   > NOTE: Do not use any special characters! Special characters can complicate
+   > the process when configuring your Atlas database with Heroku.
 
    > NOTE: Do not check 'Make read-only'. Full CRUD functionality will not work
    > with a read-only database.
@@ -276,10 +277,10 @@ the local database at all other times.
 
     The `mongoose.connect` method will stay the same.
 
-    > NOTE: In the example above, the link to the MongoDB includes the name of the
-    > database we are using, which in this case, is `book-e`. When using a different
-    > database for your own projects, make sure you include the name of the actual
-    > database you want to connect.
+    > NOTE: In the example above, the link to the MongoDB includes the name of
+    > the database we are using, which in this case, is `book-e`. When using a
+    > different database for your own projects, make sure you include the name
+    > of the actual database you want to connect.
 
 11. Next, you will need to make a minor change to `index.js`. When Heroku starts
     your app it will automatically assign a port to `process.env.PORT` (an
@@ -324,8 +325,8 @@ the local database at all other times.
     > NOTE: You must copy this from your own database to capture your unique
     > database id numbers.
 
-    > NOTE: You will still need to manually substitute the `USERNAME` and `PASSWORD`
-    > with the one you created in the next step.
+    > NOTE: You will still need to manually substitute the `USERNAME` and
+    > `PASSWORD` with the one you created in the next step.
 
 15. Set the URI you just copied as an environment variable called `DB_URL` using
     `heroku config:set`, filling in the `<USERNAME>` and `<PASSWORD>` you
@@ -339,19 +340,20 @@ the local database at all other times.
     $ heroku config
     ```
 
-    > NOTE: Do not copy the above command. The database id numbers in the URI should
-    > match the URI that you copied from your own Atlas database. The **sample**
-    > command above includes id numbers of `012345` and `12345`. Does your own Atlas
-    > URI match this? Probably not.
+    > NOTE: Do not copy the above command. The database id numbers in the URI
+    > should match the URI that you copied from your own Atlas database. The
+    > **sample** command above includes id numbers of `012345` and `12345`. Does
+    > your own Atlas URI match this? Probably not.
 
     > NOTE: Your database name will be included in the URI you copied from your
-    > Atlas database. You will need to manually add the `USERNAME` and `PASSWORD`
-    > that you created in Step 10. **DONT FORGET TO PUT QUOTES AROUND THE URL PART**
+    > Atlas database. You will need to manually add the `USERNAME` and
+    > `PASSWORD` that you created in Step 10. **DONT FORGET TO PUT QUOTES AROUND
+    > THE URL PART**
 
     > NOTE: Assigning environmental variables using `heroku config:set` is very
     > similar to using `export`, the difference being accessibility. Variables
-    > assigned using the heroku command are only accessible from the production app
-    > deployed on heroku.
+    > assigned using the heroku command are only accessible from the production
+    > app deployed on heroku.
 
 #### Deploying to Heroku
 
@@ -360,8 +362,8 @@ the local database at all other times.
     `$ git push heroku solution:master` in your terminal. This ensures that your
     most up-to-date code -- a.k.a. our `solution` branch is deployed.
 
-    > NOTE: If you are deploying to Heroku from the master branch, you can run the
-    > command `$ git push heroku master`.
+    > NOTE: If you are deploying to Heroku from the master branch, you can run
+    > the command `$ git push heroku master`.
 
 17. Seed your Atlas database by running the command:
 
