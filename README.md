@@ -15,7 +15,7 @@
 Deployment is the act of putting an app up on one or more internet-connected
 servers that allow users to access and use the app.
 
-> NOTE: What changes in an application when it is deployed?
+_Question:_ What changes in an application when it is deployed?
 
 ### Requirements for Deployment
 
@@ -102,7 +102,8 @@ $ node
 > console.log(process.env)
 ```
 
-> NOTE: What are some of the listed variables? Why would they be stored here?
+- _Question:_ What are some of the listed variables? Why would they be stored
+  here?
 
 You can create a new environmental variable in the terminal too! (terminal, not
 node!)
@@ -111,9 +112,11 @@ node!)
 $ export <YOUR_ENVIRONMENTAL_VARIABLE_NAME>=<variableValue>
 ```
 
-> NOTE: Make sure there are no spaces next to the equals sign!
+#### Note:
 
-> NOTE: Environment variables tend to be SCREAMING_SNAKE_CASE by convention.
+- Make sure there are no spaces next to the equals sign!
+
+- Environment variables tend to be SCREAMING_SNAKE_CASE by convention.
 
 To test, try logging the following code from the node repl.
 
@@ -151,9 +154,11 @@ Today, we will be deploying the 'solution' branch of our Book-e JSON excercise.
 You can clone it
 [here](https://git.generalassemb.ly/dc-wdi-node-express/book-e-json/tree/solution).
 
-> NOTE: When you clone a repo, it will clone down the master branch. Make sure
-> you `git checkout solution` to switch to the **_solution_** branch once you've
-> cloned!
+#### Note:
+
+- When you clone a repo, it will clone down the master branch. Make sure you
+  `git checkout solution` to switch to the **_solution_** branch once you've
+  cloned!
 
 ### Heroku
 
