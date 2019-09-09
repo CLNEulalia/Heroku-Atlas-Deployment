@@ -82,11 +82,13 @@ we push to Github) for several reasons:
   dynamically tell which environment we're in.
 
 Node manages application environments using "environmental variables".
+
 Environmental variables store data and configuration information that is defined
 outside of your codebase and pertain to the phase of the application's
-development. Storing this information separately protects sensitive information
-like API keys and passwords because it is not visible from your project
-directory.
+development.
+
+Storing this information separately protects sensitive information like API keys
+and passwords because it is not visible from your project directory.
 
 This is accomplished using `process`, a global object that comes with all node
 projects. `process` has a property `env` where we store environmental variables.
@@ -115,11 +117,12 @@ $ export <YOUR_ENVIRONMENTAL_VARIABLE_NAME>=<variableValue>
 
 To test, try logging the following code from the node repl.
 
-```bash
-$ process.env.<YOUR_ENVIRONMENTAL_VARIABLE_NAME>
+```js
+> process.env.<YOUR_ENVIRONMENTAL_VARIABLE_NAME> = // whatever
 ```
 
-If you'd like, you can also remove the environmental variable with:
+If you'd like, you can also remove the environmental variable by exiting out of
+the Node CLI and entering this command in the normal terminal:
 
 ```bash
 $ unset <YOUR_ENVIRONMENTAL_VARIABLE_NAME>
@@ -202,16 +205,18 @@ before executing each step.
    $ heroku create <your-app-name>
    ```
 
-   > NOTE: Make sure you are in your Book-e JSON App project directory before
-   > you run this command
+   ##### NOTE:
 
-   > NOTE: `heroku create` prepares Heroku to receive your code. Heroku will
-   > randomly create an app name for you if you don't specify one. You may need
-   > to login before you can create an app.
+   - Make sure you are in your Book-e JSON App project directory before you run
+     this command
 
-   > NOTE: If you choose to name your application, you will need to use a unique
-   > name (something someone else has not used before). If the name is taken,
-   > Heroku will prompt you to choose something new.
+   - NOTE: `heroku create` prepares Heroku to receive your code. Heroku will
+     randomly create an app name for you if you don't specify one. You may need
+     to login before you can create an app.
+
+   - NOTE: If you choose to name your application, you will need to use a unique
+     name (something someone else has not used before). If the name is taken,
+     Heroku will prompt you to choose something new.
 
 #### Set up MongoDB Atlas
 
@@ -236,19 +241,20 @@ before executing each step.
 9. Also create a username and password. **Remember the username and password you
    use for your database, you'll need them in a later step!**
 
-   > NOTE: This is **not** the user with which you logged in to Atlas. "User"
-   > refers to an app that has access to your database, and **not your Atlas
-   > account/username**.
+   ##### NOTE:
 
-   > NOTE: Create a Database username and Database password that you will
-   > remember, or write it down somewhere. You will need this information again
-   > later.
+   - This is **not** the user with which you logged in to Atlas. "User" refers
+     to an app that has access to your database, and **not your Atlas
+     account/username**.
 
-   > NOTE: Do not use any special characters! Special characters can complicate
-   > the process when configuring your Atlas database with Heroku.
+   - Create a Database username and Database password that you will remember, or
+     write it down somewhere. You will need this information again later.
 
-   > NOTE: Do not check 'Make read-only'. Full CRUD functionality will not work
-   > with a read-only database.
+   - Do not use any special characters! Special characters can complicate the
+     process when configuring your Atlas database with Heroku.
+
+   - Do not check 'Make read-only'. Full CRUD functionality will not work with a
+     read-only database.
 
 #### Heroku & Node Setup
 
@@ -284,10 +290,12 @@ the local database at all other times.
 
     The `mongoose.connect` method will stay the same.
 
-    > NOTE: In the example above, the link to the MongoDB includes the name of
-    > the database we are using, which in this case, is `book-e`. When using a
-    > different database for your own projects, make sure you include the name
-    > of the actual database you want to connect.
+    ##### NOTE:
+
+    - In the example above, the link to the MongoDB includes the name of the
+      database we are using, which in this case, is `book-e`. When using a
+      different database for your own projects, make sure you include the name
+      of the actual database you want to connect.
 
 11. Next, you will need to make a minor change to `index.js`. When Heroku starts
     your app it will automatically assign a port to `process.env.PORT` (an
@@ -313,9 +321,11 @@ the local database at all other times.
     }
     ```
 
-    > NOTE: Another way to do this is to define a
-    > [Procfile](https://devcenter.heroku.com/articles/getting-started-with-nodejs#define-a-procfile)
-    > in the root of your directory and include the line `web: node index.js`.
+    ##### Note:
+
+    - NOTE: Another way to do this is to define a
+      [Procfile](https://devcenter.heroku.com/articles/getting-started-with-nodejs#define-a-procfile)
+      in the root of your directory and include the line `web: node index.js`.
 
 13. Add and commit all changes we've made to Book-e JSON. It is a good idea to
     push to GHE as well. **IMPORTANT** if you used the solution branch, make
@@ -329,11 +339,13 @@ the local database at all other times.
 
     ![](./images/step15.png)
 
-    > NOTE: You must copy this from your own database to capture your unique
-    > database id numbers.
+    ##### Note:
 
-    > NOTE: You will still need to manually substitute the `USERNAME` and
-    > `PASSWORD` with the one you created in the next step.
+    - You must copy this from your own database to capture your unique database
+      id numbers.
+
+    - You will still need to manually substitute the `USERNAME` and `PASSWORD`
+      with the one you created in the next step.
 
 15. Set the URI you just copied as an environment variable called `DB_URL` using
     `heroku config:set`, filling in the `<USERNAME>` and `<PASSWORD>` you
@@ -347,20 +359,21 @@ the local database at all other times.
     $ heroku config
     ```
 
-    > NOTE: Do not copy the above command. The database id numbers in the URI
-    > should match the URI that you copied from your own Atlas database. The
-    > **sample** command above includes id numbers of `012345` and `12345`. Does
-    > your own Atlas URI match this? Probably not.
+    ##### Note:
 
-    > NOTE: Your database name will be included in the URI you copied from your
-    > Atlas database. You will need to manually add the `USERNAME` and
-    > `PASSWORD` that you created in Step 10. **DONT FORGET TO PUT QUOTES AROUND
-    > THE URL PART**
+    - Do not copy the above command. The database id numbers in the URI should
+      match the URI that you copied from your own Atlas database. The **sample**
+      command above includes id numbers of `012345` and `12345`. Does your own
+      Atlas URI match this? Probably not.
 
-    > NOTE: Assigning environmental variables using `heroku config:set` is very
-    > similar to using `export`, the difference being accessibility. Variables
-    > assigned using the heroku command are only accessible from the production
-    > app deployed on heroku.
+    - Your database name will be included in the URI you copied from your Atlas
+      database. You will need to manually add the `USERNAME` and `PASSWORD` that
+      you created in Step 10. **DONT FORGET TO PUT QUOTES AROUND THE URL PART**
+
+    - Assigning environmental variables using `heroku config:set` is very
+      similar to using `export`, the difference being accessibility. Variables
+      assigned using the heroku command are only accessible from the production
+      app deployed on heroku.
 
 #### Deploying to Heroku
 
@@ -369,8 +382,10 @@ the local database at all other times.
     `$ git push heroku solution:master` in your terminal. This ensures that your
     most up-to-date code -- a.k.a. our `solution` branch is deployed.
 
-    > NOTE: If you are deploying to Heroku from the master branch, you can run
-    > the command `$ git push heroku master`.
+    ##### Note:
+
+    - If you are deploying to Heroku from the master branch, you can run the
+      command `$ git push heroku master`.
 
 17. Seed your Atlas database by running the command:
 
@@ -378,8 +393,10 @@ the local database at all other times.
     $ heroku run node db/seed.js
     ```
 
-    > NOTE: `heroku run` allows you to run js files on the heroku server. We can
-    > seed our database on heroku using the same seed file we used locally.
+    ##### Note:
+
+    - `heroku run` allows you to run js files on the heroku server. We can seed
+      our database on heroku using the same seed file we used locally.
 
 18. Open your application! Run the command `$ heroku open` in your terminal.
     This will launch your production app in a new browser tab.
@@ -418,10 +435,12 @@ are not always detailed or particularly helpful.
 - Still stuck? Check out the
   [Heroku Error Codes Documentation](https://devcenter.heroku.com/articles/error-codes).
 
-> NOTE: A common error that students come across is file name case sensitivity.
-> Check out
-> [this documentation](https://stackoverflow.com/questions/10523849/changing-capitalization-of-filenames-in-git)
-> on changing the capitalization of filenames in Git.
+#### Note:
+
+- A common error that students come across is file name case sensitivity. Check
+  out
+  [this documentation](https://stackoverflow.com/questions/10523849/changing-capitalization-of-filenames-in-git)
+  on changing the capitalization of filenames in Git.
 
 ### Help Each Other Out!
 
