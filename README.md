@@ -232,10 +232,14 @@ before executing each step.
    `New Project`. Give it a name and click `Create Project`. You can leave the
    defaults in the "Create a Project" page and hit the "Create Project" button.
 
+   ![Create a project](./images/step5.png)
+
 6. Finish creating your new project and click the `Build a Cluster` button. **Be
    sure to select the free option for building your cluster!** Otherwise, leave
    all the default settings. Your cluster could take a few minutes to to finish
    building.
+
+   ![Build a cluster](./images/step6.png)
 
 7. When your cluster is finished, click the "Connect" button.
 
