@@ -229,7 +229,8 @@ before executing each step.
    sign in if you have one already.
 
 5. In the sidebar on the left, open the dropdown menu title `context` and select
-   `New Project`. Give it a name and click `Create Project`.
+   `New Project`. Give it a name and click `Create Project`. You can leave the
+   defaults in the "Create a Project" page and hit the "Create Project" button.
 
 6. Finish creating your new project and click the `Build a Cluster` button. **Be
    sure to select the free option for building your cluster!** Otherwise, leave
@@ -245,12 +246,16 @@ before executing each step.
 
 ##### NOTE:
 
-- If you forget to whitelist the IP, go to "Network Access" on the left sidebar.
-  Next select "Add IP Address" in the top right corner, and there should be a
-  "Allow Access from Anywhere" button (or you can enter `0.0.0.0/0` manually).
+- If you forget to whitelist the IP, go to "Network Access" under "Security" on
+  the left sidebar. Next select "Add IP Address" in the top right corner, and
+  there should be a "Allow Access from Anywhere" button (or you can enter
+  `0.0.0.0/0` manually).
 
 9. Also create a username and password. **Remember the username and password you
    use for your database, you'll need them in a later step!**
+
+   Go to "Database Access" under "Security" on the left sidebar. Then hit the
+   "Add New User" button on the top right.
 
    ##### NOTE:
 
@@ -265,7 +270,7 @@ before executing each step.
      process when configuring your Atlas database with Heroku.
 
    - Do not check 'Make read-only'. Full CRUD functionality will not work with a
-     read-only database.
+     read-only database. Making this user admin is perfect!
 
 #### Heroku & Node Setup
 
