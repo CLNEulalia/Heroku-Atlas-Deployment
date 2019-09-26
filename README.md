@@ -152,7 +152,7 @@ and finally, deploy our application to Heroku.
 
 Today, we will be deploying the 'solution' branch of our Book-e JSON excercise.
 You can clone it
-[here](https://git.generalassemb.ly/dc-wdi-node-express/book-e-json/tree/solution).
+[here](https://git.generalassemb.ly/seir-826/book-e-json/tree/solution).
 
 #### Note:
 
