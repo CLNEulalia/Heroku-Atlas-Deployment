@@ -222,6 +222,10 @@ before executing each step.
    - NOTE: If you choose to name your application, you will need to use a unique
      name (something someone else has not used before). If the name is taken,
      Heroku will prompt you to choose something new.
+    
+   - NOTE: Running into this error?
+   ```! Unable to connect to Heroku API, please check internet connectivity and try again.```
+   See how to debug: https://help.heroku.com/GOLWIGSP/why-can-t-i-connect-or-authenticate-with-the-heroku-command-line-cli
 
 #### Set up MongoDB Atlas
 
