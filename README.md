@@ -140,6 +140,48 @@ necessary for this deployment. It is a fantastic practice, and accords with
 
 ## Break (10 min)
 
+## Solving Deployment Issues
+
+**Not working?** Don't worry! Debugging is a part of your life now. Check out
+these tips on solivng deployment issues.
+
+### Google is Your Best Friend
+
+More often that not, solving deployment issues requires a good deal of Googling.
+Don't expect to find a silver bullet -- often we must go through many different
+issues other users may have encountered to understand our own.
+
+What should you Google?
+
+- If you aren't able to deploy, Google the error that shows up in your terminal
+  after trying to push your app.
+- If you are able to deploy but your app doesn't load/function properly, see
+  what shows up after running `$ heroku logs --tail` in the terminal.
+
+### Heroku Errors v. Node Errors
+
+You may notice that the errors you receive after running `$ heroku logs --tail`
+are not always detailed or particularly helpful.
+
+- Instead of focusing on the Heroku errors, pay attention to the Node errors in
+  your terminal. They will often provide you with more direction.
+- Still stuck? Check out the
+  [Heroku Error Codes Documentation](https://devcenter.heroku.com/articles/error-codes).
+
+#### Note:
+
+- A common error that students come across is file name case sensitivity. Check
+  out
+  [this documentation](https://stackoverflow.com/questions/10523849/changing-capitalization-of-filenames-in-git)
+  on changing the capitalization of filenames in Git.
+
+### Help Each Other Out!
+
+If you notice somebody running into the same problem as you, try working
+together on debugging it!
+
+
+
 ## Deploying Node-Express-Mongoose Applications
 
 Deploying our Node-Express-Mongoose application consists of 2 sets of steps.
@@ -431,47 +473,7 @@ the local database at all other times.
 
     ![Michelle Tanner](https://media.giphy.com/media/YJ5OlVLZ2QNl6/giphy.gif)
 
-## Solving Deployment Issues
-
-**Not working?** Don't worry! Debugging is a part of your life now. Check out
-these tips on solivng deployment issues.
-
-### Google is Your Best Friend
-
-More often that not, solving deployment issues requires a good deal of Googling.
-Don't expect to find a silver bullet -- often we must go through many different
-issues other users may have encountered to understand our own.
-
-What should you Google?
-
-- If you aren't able to deploy, Google the error that shows up in your terminal
-  after trying to push your app.
-- If you are able to deploy but your app doesn't load/function properly, see
-  what shows up after running `$ heroku logs --tail` in the terminal.
-
-### Heroku Errors v. Node Errors
-
-You may notice that the errors you receive after running `$ heroku logs --tail`
-are not always detailed or particularly helpful.
-
-- Instead of focusing on the Heroku errors, pay attention to the Node errors in
-  your terminal. They will often provide you with more direction.
-- Still stuck? Check out the
-  [Heroku Error Codes Documentation](https://devcenter.heroku.com/articles/error-codes).
-
-#### Note:
-
-- A common error that students come across is file name case sensitivity. Check
-  out
-  [this documentation](https://stackoverflow.com/questions/10523849/changing-capitalization-of-filenames-in-git)
-  on changing the capitalization of filenames in Git.
-
-### Help Each Other Out!
-
-If you notice somebody running into the same problem as you, try working
-together on debugging it!
-
-## Additonal Resources
+## Additional Resources
 
 - [About Environments](about-environments.md)
 - [12-Factor Apps in Plain English](http://www.clearlytech.com/2014/01/04/12-factor-apps-plain-english/)
