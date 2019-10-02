@@ -138,8 +138,6 @@ sensitive information in the environment. It's a handy tool but not strictly
 necessary for this deployment. It is a fantastic practice, and accords with
 [12-factor principles](https://12factor.net/).
 
-## Break (10 min)
-
 ## Solving Deployment Issues
 
 **Not working?** Don't worry! Debugging is a part of your life now. Check out
