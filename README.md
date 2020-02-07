@@ -297,8 +297,8 @@ before executing each step.
   there should be a "Allow Access from Anywhere" button (or you can enter
   `0.0.0.0/0` manually).
 
-9. Also create a username. For the password, please use an auto-generated password. **Remember the username and password you
-   use for your database, you'll need them in a later step!**
+9. Also create a username. ***For the password, please use an auto-generated password.*** 
+   **Remember the username and password you use for your database, you'll need them in a later step!**
 
    Go to "Database Access" under "Security" on the left sidebar. Then hit the
    "Add New User" button on the top right.
