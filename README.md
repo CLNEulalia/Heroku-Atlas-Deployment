@@ -190,7 +190,7 @@ and finally, deploy our application to Heroku.
 
 Today, we will be deploying the 'solution' branch of our Book-e JSON excercise.
 You can clone it
-[here](https://git.generalassemb.ly/seir-826/ebook-json/tree/solution).
+[here](https://git.generalassemb.ly/seir-129/book-e-json/tree/solution).
 
 #### Note:
 
