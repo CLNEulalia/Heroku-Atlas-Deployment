@@ -40,7 +40,7 @@ code onto a server by...
   then having an operator receive the pigeon and copy the files over to the
   server
 
-## Environments and Environmental Variables
+## Environments and Environment Variables
 
 ### Environments
 
@@ -71,7 +71,7 @@ testing, or deploying our apps. Configuration settings often include...
 - Whether or not to reload code on each request (for debugging vs performance)
 - Where to save log information (error logs, etc)
 
-### Environmental Variables
+### Environment Variables
 
 We do not want to keep configuration in our codebase (e.g. the code we see when
 we push to Github) for several reasons:
@@ -111,11 +111,9 @@ node!)
 $ export <YOUR_ENVIRONMENTAL_VARIABLE_NAME>=<variableValue>
 ```
 
-#### Note:
-
-- Make sure there are no spaces next to the equals sign!
-
-- Environment variables tend to be SCREAMING_SNAKE_CASE by convention.
+> **NOTE:**
+> - Make sure there are no spaces next to the equals sign!
+> - Environment variables tend to be SCREAMING_SNAKE_CASE by convention.
 
 To test, try logging the following code from the node repl.
 
@@ -130,7 +128,7 @@ the Node CLI and entering this command in the normal terminal:
 $ unset <YOUR_ENVIRONMENTAL_VARIABLE_NAME>
 ```
 
-#### **Bonus: dotenv**
+### Bonus: dotenv
 
 [dotenv](https://github.com/motdotla/dotenv) is a node package used to store
 sensitive information in the environment. It's a handy tool but not strictly
@@ -164,19 +162,15 @@ are not always detailed or particularly helpful.
 - Still stuck? Check out the
   [Heroku Error Codes Documentation](https://devcenter.heroku.com/articles/error-codes).
 
-#### Note:
-
-- A common error that students come across is file name case sensitivity. Check
-  out
-  [this documentation](https://stackoverflow.com/questions/10523849/changing-capitalization-of-filenames-in-git)
-  on changing the capitalization of filenames in Git.
+> **NOTE:**
+> - A common error that students come across is file name case sensitivity. Check out [this documentation](https://stackoverflow.com/questions/10523849/changing-capitalization-of-filenames-in-git) on changing the capitalization of filenames in Git.
 
 ### Help Each Other Out!
 
 If you notice somebody running into the same problem as you, try working
 together on debugging it!
 
-## Deploying Node-Express-Mongoose Applications
+# Deploying Node-Express-Mongoose Applications
 
 Deploying our Node-Express-Mongoose application consists of 2 sets of steps.
 First, we'll sign up for Heroku, download the Heroku CLI, and set up a Mongo
@@ -222,47 +216,37 @@ application deployed on Heroku.
 Today, you will need to set up an Atlas account and database to host our
 `book-e` database.
 
-### Deployment Steps
+## Deployment Steps
 
 Deployment is essentially an exercise in following directions. Follow the
 step-by-step instructions below to deploy your Book-e JSON App. Pay attention to
 the notes following each prompt! Fully read each prompt (including the notes)
 before executing each step.
 
-#### Set up Heroku
+### Set up Heroku
 
 1. Login to Heroku from the Terminal with `heroku login`.
 1. From your project directory, create an app on Heroku
 
-   ```bash
-   heroku create
-   ```
+```bash
+heroku create
+```
 
-   ##### NOTE:
+> **NOTE:**
+> - Make sure you are in your Book-e JSON App project directory before you run this command
+> - The `heroku create` command prepares Heroku to receive your code. Heroku will randomly create an app name for you if you don't specify one. You may need to login before you can create an app.
+> - If you choose to name your application with `heroku create <your-app-name>`, you will need to use a unique name. If the name is taken, Heroku will prompt you to choose something new. 
+> - Running into an error that reads: `! Unable to connect to Heroku API, please check internet connectivity and try again.` See how to debug: https://help.heroku.com/GOLWIGSP/why-can-t-i-connect-or-authenticate-with-the-heroku-command-line-cli
 
-   - Make sure you are in your Book-e JSON App project directory before you run
-     this command
+### Set up MongoDB Atlas
 
-   - NOTE: `heroku create` prepares Heroku to receive your code. Heroku will
-     randomly create an app name for you if you don't specify one. You may need
-     to login before you can create an app.
-
-   - NOTE: If you choose to name your application with `heroku create <your-app-name>`, you will need to use a unique
-     name. If the name is taken, Heroku will prompt you to choose something new. 
-    
-   - NOTE: Running into this error?
-   ```! Unable to connect to Heroku API, please check internet connectivity and try again.```
-   See how to debug: https://help.heroku.com/GOLWIGSP/why-can-t-i-connect-or-authenticate-with-the-heroku-command-line-cli
-
-#### Set up MongoDB Atlas
-
-1. Go to [Mongo Atlas](https://cloud.mongodb.com) and sign up for an account, or
-   sign in if you have one already.
+1. Go to [Mongo Atlas](https://cloud.mongodb.com) and sign up for an account, or sign in if you have one already.
 2. After you agree to the terms and conditions, you'll be presented with multiple pricing options.  Choose the "Shared Cluster" FREE option, clicking the **Create a cluster** button.
 3. On the next screen accept the default options for the cluster and click **Create cluster**.
 4. You can follow the onscreen prompts to complete the steps in the **Getting Started** wizard (the next steps below describe the steps in detail).
 5. Click **Create your first database user** in the Getting Started wizard which will prompt you to choose **Database Access** from the left menu.
 6. Click the **Add New Database User**.  In the modal, make sure the **Authentication Method** is set to **Password**. Choose a username and then click the button for **Autogenerate Secure Password**.  Before closing the modal, click **Copy** to copy the password and store it somewhere safe temporarily. **You'll need the username and password you use for your database, in a later step!** Leave the default value for Database User Privileges set to **Read and write to any database**.
+
 > **NOTE:** 
 > - This is **not** the user with which you logged in to Atlas. "User" refers to an app that has access to your database, and **not your Atlas account/username**.
 > - Create a Database username and Database password that you will remember, or write it down somewhere. You will need this information again later.
@@ -274,7 +258,7 @@ before executing each step.
 9. Skip the optional Load Sample Data step in the Getting Started wizard and instead choose the last option: **Connect to your cluster**.
 10.  In the connection modal, click the option to **Connect your application**.  We'll come back here in a minute...
 
-#### Heroku & Node Setup
+### Heroku & Node Setup
 
 Next we need to let our Node app know _when_ to use Mongo Atlas as our database,
 and when to use our local DB.
@@ -291,12 +275,12 @@ the local database at all other times.
 1. In your Node app's `db/connection.js` file, we want to use the environment
     to determine the `mongoURI` for our application to connect to.
 
-    ```diff
-    - const mongoURI = "mongodb://localhost/book-e"
-    + const mongoURI = process.env.NODE_ENV === "production" ? process.env.DB_URL : "mongodb://localhost/book-e";
-    ```
+```diff
+- const mongoURI = "mongodb://localhost/book-e"
++ const mongoURI = process.env.NODE_ENV === "production" ? process.env.DB_URL : "mongodb://localhost/book-e";
+```
 
-    The `mongoose.connect` method will stay the same.
+The `mongoose.connect` method will stay the same.
 
 > **NOTE:**
 > - In the example above, the link to the MongoDB includes the name of the database we are using, which in this case, is `book-e`. When using a different database for your own projects, make sure you include the name of the actual database you want to connect.
@@ -327,7 +311,7 @@ the local database at all other times.
 
 4. Add and commit all changes we've made to Book-e JSON.
 
-#### Heroku & Atlas Configuration
+### Heroku & Atlas Configuration
 
 1. Go back to your Atlas database in your browser. In the connection modal, click the copy button to copy the connection string.
 2. Replace the `<password>` portion of the url with your autogenerated password that you saved when you created your database user earlier.
@@ -339,7 +323,7 @@ heroku config:set DB_URL="mongodb+srv://yourusername:<password>@cluster0-zoapi.m
 heroku config
 ```
 
-#### Deploying to Heroku
+## Deploying to Heroku
 
 1. Run `git status` to make sure that there are no changes to add or commit and then push your code to Heroku remote with `git push heroku master`.
 
