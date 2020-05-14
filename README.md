@@ -2,7 +2,6 @@
 
 ## Learning Objectives
 
-- Define deployment
 - Describe the difference between development, test, and production environments
 - Use environmental variables to keep sensitive data out of code
 - Set up a Mongoose database using Atlas
@@ -81,9 +80,9 @@ we push to Github) for several reasons:
 - When we push the same code to differnt environments, we need a way to
   dynamically tell which environment we're in.
 
-Node manages application environments using "environmental variables".
+Node manages application environments using "environment variables".
 
-Environmental variables store data and configuration information that is defined
+Environment variables store data and configuration information that is defined
 outside of your codebase and pertain to the phase of the application's
 development.
 
@@ -91,15 +90,15 @@ Storing this information separately protects sensitive information like API keys
 and passwords because it is not visible from your project directory.
 
 This is accomplished using `process`, a global object that comes with all node
-projects. `process` has a property `env` where we store environmental variables.
+projects. `process` has a property `env` where we store environment variables.
 
-We can view a project's environmental variables using the node repl in our
-terminal. In your terminal,
+We can view a project's environment variables using the node REPL in our
+terminal.
 
 ```bash
 $ cd <your-node-project>
 $ node
-> console.log(process.env)
+> process.env
 ```
 
 - _Question:_ What are some of the listed variables? Why would they be stored
@@ -135,13 +134,12 @@ $ unset <YOUR_ENVIRONMENTAL_VARIABLE_NAME>
 
 [dotenv](https://github.com/motdotla/dotenv) is a node package used to store
 sensitive information in the environment. It's a handy tool but not strictly
-necessary for this deployment. It is a fantastic practice, and accords with
-[12-factor principles](https://12factor.net/).
+necessary for this deployment.
 
 ## Solving Deployment Issues
 
 **Not working?** Don't worry! Debugging is a part of your life now. Check out
-these tips on solivng deployment issues.
+these tips on solving deployment issues.
 
 ### Google is Your Best Friend
 
@@ -189,20 +187,20 @@ and finally, deploy our application to Heroku.
 ## You Do: Deploy Book-e JSON
 
 Today, we will be deploying the 'solution' branch of our Book-e JSON excercise.
-You can clone it
-[here](https://git.generalassemb.ly/seir-323/book-e-json/tree/solution).
+You can download it
+[here](https://git.generalassemb.ly/seir-323/book-e-json/archive/solution.zip).
 
-#### Note:
-
-- When you clone a repo, it will clone down the master branch. Make sure you
-  `git checkout solution` to switch to the **_solution_** branch once you've
-  cloned!
+1. Download the solution branch.
+1. Change into your sandbox directory with `cd ~/sei/sandbox`.
+1. Unzip the directory into your sandbox with `unzip ~/Downloads/book-e-json-solution`
+1. Change into the project directory with `cd book-e-json-solution`
+1. Install dependencies with `npm i`
+1. Initialize the directory as a Git repository with `git init`
 
 ### Heroku
 
-We'll be using a service called Heroku to deploy our apps, because it makes all
-the steps for deployment easy, simplifying and expediting the process. For
-example, Heroku automatically does the following...
+We'll be using Heroku to deploy our Express apps because it simplifies and expedites the process
+for deployment. Heroku automatically does the following...
 
 - Starts up a new server when we run `heroku create`, and installs all the
   necessary services
@@ -224,7 +222,7 @@ application deployed on Heroku.
 Today, you will need to set up an Atlas account and database to host our
 `book-e` database.
 
-### Deployment in 19 Easy Steps
+### Deployment Steps
 
 Deployment is essentially an exercise in following directions. Follow the
 step-by-step instructions below to deploy your Book-e JSON App. Pay attention to
@@ -233,19 +231,11 @@ before executing each step.
 
 #### Set up Heroku
 
-1. Sign up for a free [Heroku](https://www.heroku.com/) account.
-
-2. Follow the instructions
-   [here](https://devcenter.heroku.com/articles/heroku-cli) to download the
-   Heroku CLI.
-
-   > NOTE: In your terminal, you will run the command
-   > `brew tap heroku/brew && brew install heroku`
-
-3. From your project directory, create an app on Heroku
+1. Login to Heroku from the Terminal with `heroku login`.
+1. From your project directory, create an app on Heroku
 
    ```bash
-   $ heroku create <your-app-name>
+   heroku create
    ```
 
    ##### NOTE:
@@ -257,9 +247,8 @@ before executing each step.
      randomly create an app name for you if you don't specify one. You may need
      to login before you can create an app.
 
-   - NOTE: If you choose to name your application, you will need to use a unique
-     name (something someone else has not used before). If the name is taken,
-     Heroku will prompt you to choose something new.
+   - NOTE: If you choose to name your application with `heroku create <your-app-name>`, you will need to use a unique
+     name. If the name is taken, Heroku will prompt you to choose something new. 
     
    - NOTE: Running into this error?
    ```! Unable to connect to Heroku API, please check internet connectivity and try again.```
@@ -267,56 +256,23 @@ before executing each step.
 
 #### Set up MongoDB Atlas
 
-4. Go to [Mongo Atlas](https://cloud.mongodb.com) and sign up for an account, or
+1. Go to [Mongo Atlas](https://cloud.mongodb.com) and sign up for an account, or
    sign in if you have one already.
-
-5. In the sidebar on the left, open the dropdown menu title `context` and select
-   `New Project`. Give it a name and click `Create Project`. You can leave the
-   defaults in the "Create a Project" page and hit the "Create Project" button.
-
-   ![Create a project](./images/step5.png)
-
-6. Finish creating your new project and click the `Build a Cluster` button. **Be
-   sure to select the free option for building your cluster!** Otherwise, leave
-   all the default settings. Your cluster could take a few minutes to to finish
-   building.
-
-   ![Build a cluster](./images/step6.png)
-
-7. When your cluster is finished, click the "Connect" button.
-
-8. Add `0.0.0.0/0` for the whitelisted IP address, If you just add the current
-   IP address you can click on "Network Access" in the sidebar, then the "Add IP
-   Address" button in the top right, and finally "Allow Access from Anywhere"
-   and click Confirm.
-
-##### NOTE:
-
-- If you forget to whitelist the IP, go to "Network Access" under "Security" on
-  the left sidebar. Next select "Add IP Address" in the top right corner, and
-  there should be a "Allow Access from Anywhere" button (or you can enter
-  `0.0.0.0/0` manually).
-
-9. Also create a username. ***For the password, please use an auto-generated password.*** 
-   **Remember the username and password you use for your database, you'll need them in a later step!**
-
-   Go to "Database Access" under "Security" on the left sidebar. Then hit the
-   "Add New User" button on the top right.
-
-   ##### NOTE:
-
-   - This is **not** the user with which you logged in to Atlas. "User" refers
-     to an app that has access to your database, and **not your Atlas
-     account/username**.
-
-   - Create a Database username and Database password that you will remember, or
-     write it down somewhere. You will need this information again later.
-
-   - Do not use any special characters! Special characters can complicate the
-     process when configuring your Atlas database with Heroku.
-
-   - Do not check 'Make read-only'. Full CRUD functionality will not work with a
-     read-only database. Making this user admin is perfect!
+2. After you agree to the terms and conditions, you'll be presented with multiple pricing options.  Choose the "Shared Cluster" FREE option, clicking the **Create a cluster** button.
+3. On the next screen accept the default options for the cluster and click **Create cluster**.
+4. You can follow the onscreen prompts to complete the steps in the **Getting Started** wizard (the next steps below describe the steps in detail).
+5. Click **Create your first database user** in the Getting Started wizard which will prompt you to choose **Database Access** from the left menu.
+6. Click the **Add New Database User**.  In the modal, make sure the **Authentication Method** is set to **Password**. Choose a username and then click the button for **Autogenerate Secure Password**.  Before closing the modal, click **Copy** to copy the password and store it somewhere safe temporarily. **You'll need the username and password you use for your database, in a later step!** Leave the default value for Database User Privileges set to **Read and write to any database**.
+> **NOTE:** 
+> - This is **not** the user with which you logged in to Atlas. "User" refers to an app that has access to your database, and **not your Atlas account/username**.
+> - Create a Database username and Database password that you will remember, or write it down somewhere. You will need this information again later.
+> - Do not use any special characters! Special characters can complicate the process when configuring your Atlas database with Heroku.
+> - Do not check 'Make read-only'. Full CRUD functionality will not work with a read-only database.
+7. Click next option in the Getting Started wizard, **Whitelist your IP address**.  This will prompt you to choose **Network Access** from the left menu.
+8. Click the **Add IP Address** button, then in the modal, click the **Allow Access from Anywhere** button (or you can enter
+  `0.0.0.0/0` manually) and press the green **Confirm** button.
+9. Skip the optional Load Sample Data step in the Getting Started wizard and instead choose the last option: **Connect to your cluster**.
+10.  In the connection modal, click the option to **Connect your application**.  We'll come back here in a minute...
 
 #### Heroku & Node Setup
 
@@ -332,48 +288,34 @@ The code below is stating that we should use the Mongo Atlas URI (in other
 words, the link that connects us to the Atlas database) when in production, and
 the local database at all other times.
 
-10. In your Node app's `db/connection.js` file, we want to use the environment
+1. In your Node app's `db/connection.js` file, we want to use the environment
     to determine the `mongoURI` for our application to connect to.
 
     ```diff
     - const mongoURI = "mongodb://localhost/book-e"
-    + let mongoURI = "";
-    ```
-
-    Then, add
-
-    ```js
-    if (process.env.NODE_ENV === "production") {
-      mongoURI = process.env.DB_URL;
-    } else {
-      mongoURI = "mongodb://localhost/book-e";
-    }
+    + const mongoURI = process.env.NODE_ENV === "production" ? process.env.DB_URL : "mongodb://localhost/book-e";
     ```
 
     The `mongoose.connect` method will stay the same.
 
-    ##### NOTE:
+> **NOTE:**
+> - In the example above, the link to the MongoDB includes the name of the database we are using, which in this case, is `book-e`. When using a different database for your own projects, make sure you include the name of the actual database you want to connect.
 
-    - In the example above, the link to the MongoDB includes the name of the
-      database we are using, which in this case, is `book-e`. When using a
-      different database for your own projects, make sure you include the name
-      of the actual database you want to connect.
-
-11. Next, you will need to make a minor change to `index.js`. When Heroku starts
+2. Next, you will need to make a minor change to `index.js`. When Heroku starts
     your app it will automatically assign a port to `process.env.PORT` (an
     environmental variable!) to be used in production. We can modify
     `app.listen` to accomodate Heroku's production port and our own local
     development port. Add the following to `index.js`...
 
     ```js
-    app.set("port", process.env.PORT || 8080);
+    app.set("port", process.env.PORT || 8000);
 
     app.listen(app.get("port"), () => {
       console.log(`✅ PORT: ${app.get("port")} 🌟`);
     });
     ```
 
-12. Heroku looks for instruction when starting your app. In this case, that
+3. Heroku looks for instruction when starting your app. In this case, that
     instruction is to run `node index.js`. In `package.json` under `scripts`,
     add the following...
 
@@ -383,87 +325,36 @@ the local database at all other times.
     }
     ```
 
-    ##### Note:
-
-    - NOTE: Another way to do this is to define a
-      [Procfile](https://devcenter.heroku.com/articles/getting-started-with-nodejs#define-a-procfile)
-      in the root of your directory and include the line `web: node index.js`.
-
-13. Add and commit all changes we've made to Book-e JSON. It is a good idea to
-    push to GHE as well. **IMPORTANT** if you used the solution branch, make
-    sure you're making the commit to the solution branch.
+4. Add and commit all changes we've made to Book-e JSON.
 
 #### Heroku & Atlas Configuration
 
-14. Go back to your Atlas database in your browser. Click on "Connect" and then
-    the "Choose a Connection Method" button, then "Connect Your Application",
-    then "Short SRV Connection String". **Copy the connection string!**
+1. Go back to your Atlas database in your browser. In the connection modal, click the copy button to copy the connection string.
+2. Replace the `<password>` portion of the url with your autogenerated password that you saved when you created your database user earlier.
+3. Set the URI you just copied **with your password added** as an environment variable called `DB_URL` using `heroku config:set`. Use the following commands as an example (make sure to run the config:set command in your project's directory):
 
-    ![](./images/step15.png)
-
-    ##### Note:
-
-    - You must copy this from your own database to capture your unique database
-      id numbers.
-
-    - You will still need to manually substitute the `USERNAME` and `PASSWORD`
-      with the one you created in the next step.
-
-15. Set the URI you just copied as an environment variable called `DB_URL` using
-    `heroku config:set`, filling in the `<USERNAME>` and `<PASSWORD>` you
-    created on the "Users" page. Run the following in your terminal (in your
-    project's folder)...
-
-    ```bash
-    $ heroku config:set DB_URL="mongodb+srv://<USERNAME>:<PASSWORD>@cluster0-8mjuz.mongodb.net/test?retryWrites=true"
-
-    # CONFIRM
-    $ heroku config
-    ```
-
-    ##### Note:
-
-    - Do not copy the above command. The database id numbers in the URI should
-      match the URI that you copied from your own Atlas database. The **sample**
-      command above includes id numbers of `012345` and `12345`. Does your own
-      Atlas URI match this? Probably not.
-
-    - Your database name will be included in the URI you copied from your Atlas
-      database. You will need to manually add the `USERNAME` and `PASSWORD` that
-      you created in Step 10. **DONT FORGET TO PUT QUOTES AROUND THE URL PART**
-
-    - Assigning environmental variables using `heroku config:set` is very
-      similar to using `export`, the difference being accessibility. Variables
-      assigned using the heroku command are only accessible from the production
-      app deployed on heroku.
+```bash
+heroku config:set DB_URL="mongodb+srv://yourusername:<password>@cluster0-zoapi.mongodb.net/test?retryWrites=true&w=majority"
+# CONFIRM
+heroku config
+```
 
 #### Deploying to Heroku
 
-16. Push your code to Heroku remote. Because you are on the `solution` branch of
-    the Book-e JSON App, you will need to run
-    `$ git push heroku solution:master` in your terminal. This ensures that your
-    most up-to-date code -- a.k.a. our `solution` branch is deployed.
+1. Run `git status` to make sure that there are no changes to add or commit and then push your code to Heroku remote with `git push heroku master`.
 
-    ##### Note:
+2. Seed your Atlas database by running the command:
 
-    - If you are deploying to Heroku from the master branch, you can run the
-      command `$ git push heroku master`.
+```bash
+heroku run node db/seed.js
+```
+> **NOTE:**
+> - `heroku run` allows you to run js files on the heroku server. We can seed our database on heroku using the same seed file we used locally.
 
-17. Seed your Atlas database by running the command:
-
-    ```bash
-    $ heroku run node db/seed.js
-    ```
-
-    ##### Note:
-
-    - `heroku run` allows you to run js files on the heroku server. We can seed
-      our database on heroku using the same seed file we used locally.
-
-18. Open your application! Run the command `$ heroku open` in your terminal.
+3. Open your application! Run the command `$ heroku open` in your terminal.
     This will launch your production app in a new browser tab.
 
-19. You just successfully deployed your first app! You should be proud, so pat
+4. You just successfully deployed your first app! You should be proud, so pat
     yourself on the back, give your neighbor a high five, call your parents, and
     share this milestone with someone you love!
 
