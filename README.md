@@ -182,7 +182,7 @@ and finally, deploy our application to Heroku.
 
 Today, we will be deploying the 'solution' branch of our Book-e JSON excercise.
 You can download it
-[here](https://git.generalassemb.ly/seir-323/book-e-json/archive/solution.zip).
+[here](https://git.generalassemb.ly/seir-622/book-e-json/archive/solution.zip).
 
 1. Download the solution branch.
 1. Change into your sandbox directory with `cd ~/sei/sandbox`.
