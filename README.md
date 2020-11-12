@@ -178,10 +178,11 @@ together on debugging it!
 # Deploying Node-Express-Mongoose Applications
 
 Deploying our Node-Express-Mongoose application consists of 2 sets of steps.
-First, we'll sign up for Heroku, download the Heroku CLI, and set up a Mongo
-database that our app can connect to. Next, we'll configure our
-Node-Express-Mongoose applications to connect to this new cloud-hosted database
-and finally, deploy our application to Heroku.
+First, we'll create a Heroku app and then set up a Mongo cloud database that our
+Heroku app can connect to. Next, we'll verify our Node-Express-Mongoose
+applications are able to connect to this new cloud-hosted database and, finally,
+configure and deploy our application to Heroku by using Git to push our code to
+their servers.
 
 ## You Do: Deploy Book-e JSON
 
