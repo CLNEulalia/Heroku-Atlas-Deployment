@@ -328,8 +328,6 @@ const mongoURI =
       "mongodb://localhost/book-e";
 ```
 
-The `mongoose.connect` method will stay the same.
-
 > **NOTE:**
 >
 > - In the example above, the link to the MongoDB includes the name of the
